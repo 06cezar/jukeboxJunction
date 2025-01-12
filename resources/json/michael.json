@@ -1,0 +1,77 @@
+{
+    "discography": [
+      {
+        "title": "Off the Wall",
+        "image": "resources/img/OffTheWall.png",
+        "color": "rgb(255, 204, 51)",
+        "tracks": [
+          "Don't Stop 'Til You Get Enough",
+          "Rock with You",
+          "Workin' Day and Night",
+          "Get on the Floor",
+          "Off the Wall",
+          "Girlfriend",
+          "She's Out of My Life",
+          "I Can't Help It",
+          "It's the Falling in Love",
+          "Burn This Disco Out"
+        ]
+      },
+      {
+        "title": "Thriller",
+        "image": "resources/img/thriller.jpg",
+        "color": "rgb(34, 34, 34)",
+        "tracks": [
+          "Wanna Be Startin' Somethin'",
+          "Baby Be Mine",
+          "The Girl Is Mine (feat. Paul McCartney)",
+          "Thriller",
+          "Beat It",
+          "Billie Jean",
+          "Human Nature",
+          "P.Y.T. (Pretty Young Thing)",
+          "The Lady in My Life"
+        ]
+      },
+      {
+        "title": "Bad",
+        "image": "resources/img/bad.jpg",
+        "color": "rgb(204, 0, 0)",
+        "tracks": [
+          "Bad",
+          "The Way You Make Me Feel",
+          "Speed Demon",
+          "Liberian Girl",
+          "Just Good Friends",
+          "Another Part of Me",
+          "Man in the Mirror",
+          "I Just Can't Stop Loving You",
+          "Dirty Diana",
+          "Smooth Criminal",
+          "Leave Me Alone"
+        ]
+      },
+      {
+        "title": "Dangerous",
+        "image": "resources/img/Dangerous.jpg",
+        "color": "rgb(85, 85, 85)",
+        "tracks": [
+          "Jam",
+          "Why You Wanna Trip on Me",
+          "In the Closet",
+          "She Drives Me Wild",
+          "Remember the Time",
+          "Can't Let Her Get Away",
+          "Heal the World",
+          "Black or White",
+          "Who Is It",
+          "Give in to Me",
+          "Will You Be There",
+          "Keep the Faith",
+          "Gone Too Soon",
+          "Dangerous"
+        ]
+      }
+    ]
+  }
+  

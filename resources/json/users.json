@@ -1,0 +1,35 @@
+[
+    {
+      "username": "testuser",
+      "password": "password123"
+    },
+    {
+      "username": "admin",
+      "password": "admin2023"
+    },
+    {
+      "username": "johndoe",
+      "password": "securePass456"
+    },
+    {
+      "username": "janedoe",
+      "password": "JaneD12345"
+    },
+    {
+      "username": "cezar",
+      "password": "proiectTW2025"
+    },
+    {
+      "username": "maria",
+      "password": "mariaSecure98"
+    },
+    {
+      "username": "alex",
+      "password": "alexStrong001"
+    },
+    {
+      "username": "admin",
+      "password": "admin123"
+    }
+  ]
+  

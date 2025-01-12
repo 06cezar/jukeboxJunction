@@ -1,0 +1,148 @@
+{
+    "discography": [
+      {
+        "title": "Born to Die",
+        "image": "resources/img/BornToDie.png",
+        "color": "rgb(205, 92, 92)",
+        "tracks": [
+          "Born to Die",
+          "Off to the Races",
+          "Blue Jeans",
+          "Video Games",
+          "Diet Mountain Dew",
+          "National Anthem",
+          "Dark Paradise",
+          "Radio",
+          "Carmen",
+          "Million Dollar Man",
+          "Summertime Sadness",
+          "This Is What Makes Us Girls"
+        ]
+      },
+      {
+        "title": "Ultraviolence",
+        "image": "resources/img/Ultraviolence.png",
+        "color": "rgb(119, 136, 153)",
+        "tracks": [
+          "Cruel World",
+          "Ultraviolence",
+          "Shades of Cool",
+          "Brooklyn Baby",
+          "West Coast",
+          "Sad Girl",
+          "Pretty When You Cry",
+          "Money Power Glory",
+          "Fucked My Way Up to the Top",
+          "Old Money",
+          "The Other Woman"
+        ]
+      },
+      {
+        "title": "Honeymoon",
+        "image": "resources/img/Honeymoon.jpg",
+        "color": "rgb(255, 160, 122)",
+        "tracks": [
+          "Honeymoon",
+          "Music to Watch Boys To",
+          "Terrence Loves You",
+          "God Knows I Tried",
+          "High by the Beach",
+          "Freak",
+          "Art Deco",
+          "Burnt Norton (Interlude)",
+          "Religion",
+          "Salvatore",
+          "The Blackest Day",
+          "24",
+          "Swan Song",
+          "Don't Let Me Be Misunderstood"
+        ]
+      },
+      {
+        "title": "Lust for Life",
+        "image": "resources/img/lfr.jpg",
+        "color": "rgb(220, 20, 60)",
+        "tracks": [
+          "Love",
+          "Lust for Life (feat. The Weeknd)",
+          "13 Beaches",
+          "Cherry",
+          "White Mustang",
+          "Summer Bummer (feat. A$AP Rocky & Playboi Carti)",
+          "Groupie Love (feat. A$AP Rocky)",
+          "In My Feelings",
+          "Coachella – Woodstock in My Mind",
+          "God Bless America – And All the Beautiful Women in It",
+          "When the World Was at War We Kept Dancing",
+          "Beautiful People Beautiful Problems (feat. Stevie Nicks)",
+          "Tomorrow Never Came (feat. Sean Ono Lennon)",
+          "Heroin",
+          "Change",
+          "Get Free"
+        ]
+      },
+      {
+        "title": "Norman Fucking Rockwell!",
+        "image": "resources/img/nfr.png",
+        "color": "rgb(70, 130, 180)",
+        "tracks": [
+          "Norman Fucking Rockwell",
+          "Mariners Apartment Complex",
+          "Venice Bitch",
+          "Fuck It I Love You",
+          "Doin' Time",
+          "Love Song",
+          "Cinnamon Girl",
+          "How to Disappear",
+          "California",
+          "The Next Best American Record",
+          "The Greatest",
+          "Bartender",
+          "Happiness is a Butterfly",
+          "Hope is a Dangerous Thing for a Woman Like Me to Have – But I Have It"
+        ]
+      },
+      {
+        "title": "Chemtrails over the Country Club",
+        "image": "resources/img/chemtrails.png",
+        "color": "rgb(250, 235, 215)",
+        "tracks": [
+          "White Dress",
+          "Chemtrails Over the Country Club",
+          "Tulsa Jesus Freak",
+          "Let Me Love You Like a Woman",
+          "Wild at Heart",
+          "Dark But Just a Game",
+          "Not All Who Wander Are Lost",
+          "Yosemite",
+          "Breaking Up Slowly",
+          "Dance Till We Die",
+          "For Free"
+        ]
+      },
+      {
+        "title": "Did You Know That There's a Tunnel Under Ocean Blvd",
+        "image": "resources/img/tunnel.jpg",
+        "color": "rgb(72, 61, 139)",
+        "tracks": [
+          "The Grants",
+          "Did You Know That There's a Tunnel Under Ocean Blvd",
+          "Sweet",
+          "A&W",
+          "Judah Smith Interlude",
+          "Candy Necklace",
+          "Jon Batiste Interlude",
+          "Kintsugi",
+          "Fingertips",
+          "Paris, Texas",
+          "Grandfather Please Stand on the Shoulders of My Father While He's Deep-Sea Fishing",
+          "Let the Light In",
+          "Margaret",
+          "Fishtail",
+          "Peppers",
+          "Taco Truck x VB"
+        ]
+      }
+    ]
+  }
+  

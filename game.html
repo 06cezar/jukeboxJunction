@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Concise JSON Demo</title>
+  <script type="text/javascript" src="resources/js/script.js"></script>
+  <link rel="stylesheet" href="resources/css/game.css">
+</head>
+<body>
+    <header>
+        <h1>Jukebox Junction Game</h1>
+    </header>
+    <div id="instructions">
+        <p>
+          A random song has been generated from a specific artist. Your goal is to guess the song! 
+          Based on your guess, you will see arrows indicating whether the song's track number is 
+          <span class="highlight">higher</span> or <span class="highlight">lower</span> than your guess, 
+          and whether the song is from a <span class="highlight">newer</span> or <span class="highlight">older</span> album.
+        </p>
+        <p>Yellow arrows indicate you're close to the correct answer!</p>
+      </div>
+      <div id="artistGallery">
+        <h2>Select an Artist, and Refresh the Page</h2>
+        <div class="gallery">
+          <div class="artist-card" id="frank">
+            <img src="resources/img/frankocean.jpg" alt="Frank Ocean" class="artist-photo">
+            <p>Frank Ocean</p>
+          </div>
+          <div class="artist-card" id="tyler">
+            <img src="resources/img/tylerthecreator.jpg" alt="Tyler, The Creator" class="artist-photo">
+            <p>Tyler, The Creator</p>
+          </div>
+          <div class="artist-card" id="lana">
+            <img src="resources/img/lanadelrey.jpg" alt="Lana Del Rey" class="artist-photo">
+            <p>Lana Del Rey</p>
+          </div>
+          <div class="artist-card" id="michael">
+            <img src="resources/img/michaeljackson.jpg" alt="Michael Jackson" class="artist-photo">
+            <p>Michael Jackson</p>
+          </div>
+        </div>
+      </div>
+            
+    <label for="colorPicker">Choose text color:</label>
+    <input type="color" id="colorPicker" />
+  <div class="container" id="outerBox">
+
+    <div id="AlbumPicBox">
+        
+        <i class="fa-solid fa-arrow-up fa-2x" id="UpArrowAlbumPic" style="display:none"></i>
+        <i class="fa-solid fa-arrow-down fa-2x" id="DownArrowAlbumPic"  style="display:none"></i>
+        <div id="AlbumPicDiv"><img id="AlbumPic"></img></div>
+
+    </div>
+
+    <div id = "AlbumDetailsBox">
+
+        <label for=”titleBorderBox”> Title: </label>
+            <div id="titleBorderBox" class="DetailsBorder">
+                <h1 id="titleH1" class="albumDetails"> </h1>
+            </div>
+
+        <label for="AlbumBorderBox"> Album: </label>
+            <div id="AlbumBorderBox" class="DetailsBorder">
+                <h1 id="albumH1" class="albumDetails">
+                </h1>
+                <svg fill="#111111" height="16px" width="16px" version="1.1" id="UpArrowAlbumName" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" 
+                    viewBox="0 0 330 330" xml:space="preserve" style="display:none">
+                <path id="XMLID_21_" d="M213.107,41.894l-37.5-37.5c-5.857-5.858-15.355-5.858-21.213,0l-37.5,37.5
+                    c-4.29,4.29-5.573,10.742-3.252,16.347c2.322,5.605,7.792,9.26,13.858,9.26H150V315c0,8.284,6.716,15,15,15c8.284,0,15-6.716,15-15
+                    V67.5h22.5c6.067,0,11.537-3.655,13.858-9.26C218.68,52.635,217.397,46.184,213.107,41.894z"/>
+                </svg><svg fill="#000000" height="16px" width="16px" version="1.1" id="DownArrowAlbumName" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" 
+                viewBox="0 0 330 330" xml:space="preserve" style="display:none">
+                <path id="XMLID_24_" d="M216.358,271.76c-2.322-5.605-7.792-9.26-13.858-9.26H180V15c0-8.284-6.716-15-15-15
+                c-8.284,0-15,6.716-15,15v247.5h-22.5c-6.067,0-11.537,3.655-13.858,9.26c-2.321,5.605-1.038,12.057,3.252,16.347l37.5,37.5
+                C157.322,328.536,161.161,330,165,330s7.678-1.464,10.607-4.394l37.5-37.5C217.396,283.816,218.68,277.365,216.358,271.76z"/>
+                </svg>
+                <svg fill="#FBFF00" height="16px" width="16px" version="1.1" id="GoldenUpArrowAlbumName" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" 
+                    viewBox="0 0 330 330" xml:space="preserve" style="display:none">
+                <path id="XMLID_21__" d="M213.107,41.894l-37.5-37.5c-5.857-5.858-15.355-5.858-21.213,0l-37.5,37.5
+                    c-4.29,4.29-5.573,10.742-3.252,16.347c2.322,5.605,7.792,9.26,13.858,9.26H150V315c0,8.284,6.716,15,15,15c8.284,0,15-6.716,15-15
+                    V67.5h22.5c6.067,0,11.537-3.655,13.858-9.26C218.68,52.635,217.397,46.184,213.107,41.894z"/>
+                </svg><svg fill="#FBFF00" height="16px" width="16px" version="1.1" id="GoldenDownArrowAlbumName" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" 
+                viewBox="0 0 330 330" xml:space="preserve" style="display:none">
+                <path id="XMLID_24__" d="M216.358,271.76c-2.322-5.605-7.792-9.26-13.858-9.26H180V15c0-8.284-6.716-15-15-15
+                c-8.284,0-15,6.716-15,15v247.5h-22.5c-6.067,0-11.537,3.655-13.858,9.26c-2.321,5.605-1.038,12.057,3.252,16.347l37.5,37.5
+                C157.322,328.536,161.161,330,165,330s7.678-1.464,10.607-4.394l37.5-37.5C217.396,283.816,218.68,277.365,216.358,271.76z"/>
+                </svg>
+                <svg fill="#40C408" height="16px" width="16px" version="1.1" id="CheckmarkAlbumName" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" 
+                viewBox="0 0 512 512" xml:space="preserve" style="display:none">
+                   <g>
+                       <path d="M474.045,173.813c-4.201,1.371-6.494,5.888-5.123,10.088c7.571,23.199,11.411,47.457,11.411,72.1
+                           c0,62.014-24.149,120.315-68,164.166s-102.153,68-164.167,68s-120.316-24.149-164.167-68S16,318.014,16,256
+                           S40.149,135.684,84,91.833s102.153-68,164.167-68c32.889,0,64.668,6.734,94.455,20.017c28.781,12.834,54.287,31.108,75.81,54.315
+                           c3.004,3.239,8.066,3.431,11.306,0.425c3.24-3.004,3.43-8.065,0.426-11.306c-23-24.799-50.26-44.328-81.024-58.047
+                           C317.287,15.035,283.316,7.833,248.167,7.833c-66.288,0-128.608,25.813-175.48,72.687C25.814,127.392,0,189.712,0,256
+                           c0,66.287,25.814,128.607,72.687,175.479c46.872,46.873,109.192,72.687,175.48,72.687s128.608-25.813,175.48-72.687
+                           c46.873-46.872,72.687-109.192,72.687-175.479c0-26.332-4.105-52.26-12.201-77.064
+                           C482.762,174.736,478.245,172.445,474.045,173.813z"/>
+                       <path d="M504.969,83.262c-4.532-4.538-10.563-7.037-16.98-7.037s-12.448,2.499-16.978,7.034l-7.161,7.161
+                           c-3.124,3.124-3.124,8.189,0,11.313c3.124,3.123,8.19,3.124,11.314-0.001l7.164-7.164c1.51-1.512,3.52-2.344,5.66-2.344
+                           s4.15,0.832,5.664,2.348c1.514,1.514,2.348,3.524,2.348,5.663s-0.834,4.149-2.348,5.663L217.802,381.75
+                           c-1.51,1.512-3.52,2.344-5.66,2.344s-4.15-0.832-5.664-2.348L98.747,274.015c-1.514-1.514-2.348-3.524-2.348-5.663
+                           c0-2.138,0.834-4.149,2.351-5.667c1.51-1.512,3.52-2.344,5.66-2.344s4.15,0.832,5.664,2.348l96.411,96.411
+                           c1.5,1.5,3.535,2.343,5.657,2.343s4.157-0.843,5.657-2.343l234.849-234.849c3.125-3.125,3.125-8.189,0-11.314
+                           c-3.124-3.123-8.189-3.123-11.313,0L212.142,342.129l-90.75-90.751c-4.533-4.538-10.563-7.037-16.98-7.037
+                           s-12.448,2.499-16.978,7.034c-4.536,4.536-7.034,10.565-7.034,16.977c0,6.412,2.498,12.441,7.034,16.978l107.728,107.728
+                           c4.532,4.538,10.563,7.037,16.98,7.037c6.417,0,12.448-2.499,16.977-7.033l275.847-275.848c4.536-4.536,7.034-10.565,7.034-16.978
+                           S509.502,87.794,504.969,83.262z"/>
+                   </g>
+                   </svg>
+            </div>
+        <label for=”trackNrBorderBox”> Track Number: </label>
+            <div id="trackNrBorderBox" class="DetailsBorder">
+            <h1 id="trackNrH1" class="albumDetails"></h1>
+            <svg fill="#111111" height="16px" width="16px" version="1.1" id="UpArrowTrackNr" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" 
+            viewBox="0 0 330 330" xml:space="preserve" style="display:none">
+        <path id="XMLID_21_" d="M213.107,41.894l-37.5-37.5c-5.857-5.858-15.355-5.858-21.213,0l-37.5,37.5
+            c-4.29,4.29-5.573,10.742-3.252,16.347c2.322,5.605,7.792,9.26,13.858,9.26H150V315c0,8.284,6.716,15,15,15c8.284,0,15-6.716,15-15
+            V67.5h22.5c6.067,0,11.537-3.655,13.858-9.26C218.68,52.635,217.397,46.184,213.107,41.894z"/>
+        </svg><svg fill="#000000" height="16px" width="16px" version="1.1" id="DownArrowTrackNr" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" 
+        viewBox="0 0 330 330" xml:space="preserve" style="display:none">
+        <path id="XMLID_24_" d="M216.358,271.76c-2.322-5.605-7.792-9.26-13.858-9.26H180V15c0-8.284-6.716-15-15-15
+        c-8.284,0-15,6.716-15,15v247.5h-22.5c-6.067,0-11.537,3.655-13.858,9.26c-2.321,5.605-1.038,12.057,3.252,16.347l37.5,37.5
+        C157.322,328.536,161.161,330,165,330s7.678-1.464,10.607-4.394l37.5-37.5C217.396,283.816,218.68,277.365,216.358,271.76z"/>
+        </svg>
+        <svg fill="#FBFF00" height="16px" width="16px" version="1.1" id="GoldenUpArrowTrackNr" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" 
+            viewBox="0 0 330 330" xml:space="preserve" style="display:none">
+        <path id="XMLID_21__" d="M213.107,41.894l-37.5-37.5c-5.857-5.858-15.355-5.858-21.213,0l-37.5,37.5
+            c-4.29,4.29-5.573,10.742-3.252,16.347c2.322,5.605,7.792,9.26,13.858,9.26H150V315c0,8.284,6.716,15,15,15c8.284,0,15-6.716,15-15
+            V67.5h22.5c6.067,0,11.537-3.655,13.858-9.26C218.68,52.635,217.397,46.184,213.107,41.894z"/>
+        </svg><svg fill="#FBFF00" height="16px" width="16px" version="1.1" id="GoldenDownArrowTrackNr" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" 
+        viewBox="0 0 330 330" xml:space="preserve" style="display:none">
+        <path id="XMLID_24__" d="M216.358,271.76c-2.322-5.605-7.792-9.26-13.858-9.26H180V15c0-8.284-6.716-15-15-15
+        c-8.284,0-15,6.716-15,15v247.5h-22.5c-6.067,0-11.537,3.655-13.858,9.26c-2.321,5.605-1.038,12.057,3.252,16.347l37.5,37.5
+        C157.322,328.536,161.161,330,165,330s7.678-1.464,10.607-4.394l37.5-37.5C217.396,283.816,218.68,277.365,216.358,271.76z"/>
+        </svg>
+        <svg fill="#40C408" height="16px" width="16px" version="1.1" id="CheckmarkTrackNr" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" 
+	 viewBox="0 0 512 512" xml:space="preserve" style="display:none">
+        <g>
+            <path d="M474.045,173.813c-4.201,1.371-6.494,5.888-5.123,10.088c7.571,23.199,11.411,47.457,11.411,72.1
+                c0,62.014-24.149,120.315-68,164.166s-102.153,68-164.167,68s-120.316-24.149-164.167-68S16,318.014,16,256
+                S40.149,135.684,84,91.833s102.153-68,164.167-68c32.889,0,64.668,6.734,94.455,20.017c28.781,12.834,54.287,31.108,75.81,54.315
+                c3.004,3.239,8.066,3.431,11.306,0.425c3.24-3.004,3.43-8.065,0.426-11.306c-23-24.799-50.26-44.328-81.024-58.047
+                C317.287,15.035,283.316,7.833,248.167,7.833c-66.288,0-128.608,25.813-175.48,72.687C25.814,127.392,0,189.712,0,256
+                c0,66.287,25.814,128.607,72.687,175.479c46.872,46.873,109.192,72.687,175.48,72.687s128.608-25.813,175.48-72.687
+                c46.873-46.872,72.687-109.192,72.687-175.479c0-26.332-4.105-52.26-12.201-77.064
+                C482.762,174.736,478.245,172.445,474.045,173.813z"/>
+            <path d="M504.969,83.262c-4.532-4.538-10.563-7.037-16.98-7.037s-12.448,2.499-16.978,7.034l-7.161,7.161
+                c-3.124,3.124-3.124,8.189,0,11.313c3.124,3.123,8.19,3.124,11.314-0.001l7.164-7.164c1.51-1.512,3.52-2.344,5.66-2.344
+                s4.15,0.832,5.664,2.348c1.514,1.514,2.348,3.524,2.348,5.663s-0.834,4.149-2.348,5.663L217.802,381.75
+                c-1.51,1.512-3.52,2.344-5.66,2.344s-4.15-0.832-5.664-2.348L98.747,274.015c-1.514-1.514-2.348-3.524-2.348-5.663
+                c0-2.138,0.834-4.149,2.351-5.667c1.51-1.512,3.52-2.344,5.66-2.344s4.15,0.832,5.664,2.348l96.411,96.411
+                c1.5,1.5,3.535,2.343,5.657,2.343s4.157-0.843,5.657-2.343l234.849-234.849c3.125-3.125,3.125-8.189,0-11.314
+                c-3.124-3.123-8.189-3.123-11.313,0L212.142,342.129l-90.75-90.751c-4.533-4.538-10.563-7.037-16.98-7.037
+                s-12.448,2.499-16.978,7.034c-4.536,4.536-7.034,10.565-7.034,16.977c0,6.412,2.498,12.441,7.034,16.978l107.728,107.728
+                c4.532,4.538,10.563,7.037,16.98,7.037c6.417,0,12.448-2.499,16.977-7.033l275.847-275.848c4.536-4.536,7.034-10.565,7.034-16.978
+                S509.502,87.794,504.969,83.262z"/>
+        </g>
+        </svg>
+    </div>
+        <div class="search-container">
+            <input type="text" id="searchInput" placeholder="Type a song title..." autocomplete="off">
+                <div id="dropdown" class="dropdown" style="display: none;"></div>
+        </div>
+            <button id="submitbtn" onclick="play()">Guess!</button>
+            </div>
+            </div>
+            <div id="winContainer">
+                <h1 id="winMessage"></h1>
+                <p id="detailsMessage"></p>
+                <button id="playAgainBtn" onclick="playAgain()">Play Again</button>
+              </div>
+      <div id="output">Loading...</div>
+</body>
+</html>

@@ -1,0 +1,95 @@
+{
+    "discography": [
+      {
+        "title": "Nostalgia, Ultra",
+        "image": "resources/img/Nostalgiaultra.jpg",
+        "color": "rgb(255, 120, 20)",
+        "tracks": [
+          "Street Fighter",
+          "Strawberry Swing",
+          "Novacane",
+          "We All Try",
+          "Bitches Talkin'",
+          "Songs for Women",
+          "Lovecrimes",
+          "Goldeneye",
+          "There Will Be Tears",
+          "Swim Good",
+          "Dust",
+          "American Wedding",
+          "Soul Calibur"
+        ]
+      },
+      {
+        "title": "Channel Orange",
+        "image": "resources/img/ChannelOrange.jpg",
+        "color": "rgb(243, 156, 18)",
+        "tracks": [
+          "Start",
+          "Thinkin Bout You",
+          "Fertilizer",
+          "Sierra Leone",
+          "Sweet Life",
+          "Not Just Money",
+          "Super Rich Kids",
+          "Pilot Jones",
+          "Crack Rock",
+          "Pyramids",
+          "Lost",
+          "White",
+          "Monks",
+          "Bad Religion",
+          "Pink Matter",
+          "Forrest Gump",
+          "End"
+        ]
+      },
+      {
+        "title": "Blonde",
+        "image": "resources/img/blonde.jpg",
+        "color": "rgb(186, 186, 186)",
+        "tracks": [
+          "Nikes",
+          "Ivy",
+          "Pink + White",
+          "Be Yourself",
+          "Solo",
+          "Skyline To",
+          "Self Control",
+          "Good Guy",
+          "Nights",
+          "Solo (Reprise)",
+          "Pretty Sweet",
+          "Facebook Story",
+          "Close to You",
+          "White Ferrari",
+          "Seigfried",
+          "Godspeed",
+          "Futura Free"
+        ]
+      },
+      {
+      "title": "Endless",
+      "image": "resources/img/Endless.jpg",
+      "color": "rgb(50, 50, 50)",
+      "tracks": [
+        "At Your Best (You Are Love)",
+        "Alabama",
+        "Mine",
+        "U-N-I-T-Y",
+        "Ambience 001: In a Certain Way",
+        "Comme des Garçons",
+        "Ambience 002: Honeybaby",
+        "Wither",
+        "Hublots",
+        "In Here Somewhere",
+        "Slide on Me",
+        "Sideways",
+        "Florida",
+        "Rushes",
+        "Rushes To",
+        "Higgs"
+      ]
+    }
+  ]
+}

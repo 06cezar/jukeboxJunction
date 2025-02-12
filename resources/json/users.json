@@ -4,10 +4,6 @@
       "password": "password123"
     },
     {
-      "username": "admin",
-      "password": "admin2023"
-    },
-    {
       "username": "johndoe",
       "password": "securePass456"
     },
@@ -20,6 +16,10 @@
       "password": "proiectTW2025"
     },
     {
+      "username": "larisa",
+      "password": "shawnmendes2025"
+    },
+    {
       "username": "maria",
       "password": "mariaSecure98"
     },
@@ -30,6 +30,10 @@
     {
       "username": "admin",
       "password": "admin123"
+    },
+    {
+      "username": "laura",
+      "password": "cezaristhebest"
     }
   ]
   

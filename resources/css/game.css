@@ -1,12 +1,4 @@
-:root{
-    --beige: rgb(222, 189, 151);
-    --crem: rgb(207, 185, 151);
-    --color2: beige;
-    --gray: rgb(68, 68, 68);
-    --darker-gray: rgb(51, 51, 51);
-    --righteous: 'Righteous', cursive;
-    --playfair: 'Playfair Display', serif;
-}
+/* culorile, header-ul si meniul de baza sunt in base.css */
  body {
     background-color: var(--darker-gray);
     color: #eee;
@@ -15,18 +7,16 @@
     padding: 2rem;
   }
   header {
-    background-color: var(--darker-gray);
-    color: var(--color2);
-    cursor: url('../svg/boombox.svg') 16 16, auto;
     padding-top: 20px;
-    text-align: center;
-    position: relative;
     min-height: 80px; /* foarte imp pt a fi responsive */
 }
 header h1 {
-  margin: 0;
   font-size: 3rem;
-  font-family: var(--righteous);
+}
+
+nav {
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 #instructions {
@@ -69,16 +59,26 @@ header h1 {
   gap: 20px;
 }
 
+/* cardurile sunt <button>, ca sa poata fi alese si de la tastatura (Tab + Enter/Space) */
 .artist-card {
   display: flex;
   flex-direction: column;
   align-items: center;
   max-width: 150px;
+  padding: 0;
+  border: none;
+  background: none;
   text-align: center;
   font-family: Arial, sans-serif;
   color: #ffffff;
   cursor: pointer;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.artist-card:focus-visible {
+  outline: 3px solid #4CAF50;
+  outline-offset: 4px;
+  border-radius: 10px;
 }
 
 .artist-card:hover {
@@ -106,8 +106,9 @@ header h1 {
 }
 
 
-.artist-card p {
-  margin-top: 10px;
+.artist-card span {
+  display: block;
+  margin: 10px 0 16px;
   font-size: 16px;
   font-weight: bold;
 }
@@ -121,6 +122,7 @@ header h1 {
 
   #searchInput {
     width: 100%;
+    box-sizing: border-box; /* latimea include padding-ul, ca sa nu iasa din cutie */
     padding: 10px;
     font-size: 0.8rem;
     border: 1px solid #444;
@@ -170,6 +172,15 @@ header h1 {
     text-align: center;
   }
 
+  /* textul ghicirii (titlu, album, nr. piesa) */
+  .albumDetails {
+    font-family: 'Mynerve', cursive;
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+    margin: 0.67em 0;
+  }
+
 
   .container {
     display: flex;
@@ -211,13 +222,28 @@ header h1 {
   }
 
 
-  #AlbumDetailsBox label {
+  .detail-label {
     color:#222;
     font-weight: bold;
     font-size: 1.5rem;
   }
   .DetailsBorder{
     border-bottom: 10px solid pink;
+  }
+
+  /* svg-ul cu <symbol>-uri nu trebuie sa ocupe loc in pagina */
+  .icon-sprite {
+    position: absolute;
+    width: 0;
+    height: 0;
+    overflow: hidden;
+  }
+
+  /* sagetile si bifa: ascunse pana la prima ghicire (JS le afiseaza cu display: inline) */
+  .hint-icon {
+    display: none;
+    width: 16px;
+    height: 16px;
   }
 
 
@@ -275,4 +301,28 @@ header h1 {
     margin-bottom: 20px;
     font-size: 18px;
     color: #000000;
+  }
+
+  /* pe telefon: coperta deasupra detaliilor, nu una langa alta */
+  @media (max-width: 768px) {
+    body {
+      padding: 1rem;
+    }
+    header h1 {
+      font-size: 2rem;
+    }
+    .container {
+      flex-direction: column;
+      align-items: stretch;
+      height: auto;
+      max-width: none;
+      margin: 1rem 0;
+      padding: 16px;
+    }
+    #AlbumPicBox {
+      width: 100%;
+    }
+    #AlbumDetailsBox {
+      max-width: none;
+    }
   }

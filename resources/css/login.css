@@ -10,7 +10,7 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background: rgb(222, 189, 151);
+    background: var(--beige); /* din base.css */
 }
 
 .login-container {
@@ -92,6 +92,18 @@ body {
     color: #333333;
     font-size: 0.9rem;
     text-align: center;
+}
+
+.back-link {
+    display: inline-block;
+    margin-top: 15px;
+    color: #6c63ff;
+    font-size: 0.9rem;
+    text-decoration: none;
+}
+
+.back-link:hover {
+    text-decoration: underline;
 }
 
 @media (max-width: 480px) {

@@ -1,13 +1,15 @@
-var allTracks = []; // array cu toate piesele pt search filter
-var albums; // va lua valoarea unui array de obiecte
-var randomAlbumNr;
-var randomTrackNr;
-var triesNr = 0;
-var songsGuessed = 0;
-var correctSong;
-var correctAlbum;
-var loadingArtist; // artistul care se incarca acum (ignoram raspunsurile vechi daca se schimba artistul repede)
-var pickedColor = null; // culoarea aleasa din color picker (null = folosim culoarea albumului)
+// starea jocului
+let allTracks = []; // array cu toate piesele pt search filter
+let albums; // va lua valoarea unui array de obiecte
+let randomAlbumNr;
+let randomTrackNr;
+let triesNr = 0;
+let correctSong;
+let correctAlbum;
+let loadingArtist; // artistul care se incarca acum (ignoram raspunsurile vechi daca se schimba artistul repede)
+let pickedColor = null; // culoarea aleasa din color picker (null = folosim culoarea albumului)
+const playerName = localStorage.getItem("loggedInUser") || "Player";
+
 window.onload = function() {
   const savedArtist = localStorage.getItem("selectedArtist") || "tyler";
   loadArtist(savedArtist);
@@ -52,6 +54,10 @@ searchInput.addEventListener('input', function() {
   });
 });
 
+// butoanele jocului
+document.getElementById('submitbtn').addEventListener('click', play);
+document.getElementById('playAgainBtn').addEventListener('click', playAgain);
+
 // Enter trimite ghicirea, la fel ca butonul Guess!
 searchInput.addEventListener('keydown', function(e) {
   if (e.key === 'Enter') {
@@ -95,6 +101,7 @@ function loadArtist(artist)
   const artistCards = document.querySelectorAll(".artist-card");
   artistCards.forEach((card) => {
     card.classList.toggle("selected", card.id === artist);
+    card.setAttribute("aria-pressed", card.id === artist); // cititoarele de ecran anunta ce artist e ales
   });
   resetBoard();
   document.getElementById('output').innerText = 'Loading...';
@@ -149,9 +156,9 @@ function pickRandomSong()
 function resetBoard()
 {
   // sterg ghicirea afisata
-  document.getElementById("titleH1").innerHTML = "";
-  document.getElementById("albumH1").innerHTML = "";
-  document.getElementById("trackNrH1").innerHTML = "";
+  document.getElementById("titleText").textContent = "";
+  document.getElementById("albumText").textContent = "";
+  document.getElementById("trackNrText").textContent = "";
   document.getElementById("AlbumPic").removeAttribute("src");
   document.getElementById("searchInput").value = "";
   // ascund toate sagetile si bifele
@@ -182,20 +189,7 @@ function play()
     }
     let albumNr;
     let trackNr;
-    let UpArrowAlbumName = document.getElementById("UpArrowAlbumName");
-    let DownArrowAlbumName = document.getElementById("DownArrowAlbumName");
-    let GoldenUpArrowAlbumName = document.getElementById("GoldenUpArrowAlbumName");
-    let GoldenDownArrowAlbumName = document.getElementById("GoldenDownArrowAlbumName");
-    let CheckmarkAlbumName = document.getElementById("CheckmarkAlbumName");
-    let UpArrowTrackNr = document.getElementById("UpArrowTrackNr");
-    let DownArrowTrackNr = document.getElementById("DownArrowTrackNr");
-    let GoldenUpArrowTrackNr = document.getElementById("GoldenUpArrowTrackNr");
-    let GoldenDownArrowTrackNr= document.getElementById("GoldenDownArrowTrackNr");
-    let CheckmarkTrackNr = document.getElementById("CheckmarkTrackNr");
-    let guess = document.getElementById("searchInput").value;
-    guess = String(guess).trim().toLowerCase(); // comparam fara spatii in plus si fara sa conteze literele mari/mici
-    let diferentaA;
-	let diferentaS;
+    const guess = document.getElementById("searchInput").value.trim().toLowerCase(); // comparam fara spatii in plus si fara sa conteze literele mari/mici
     for(let albumIndex = 0; albumIndex < albums.length; albumIndex++)
     {
         let album = albums[albumIndex];
@@ -208,10 +202,10 @@ function play()
                 trackNr = trackIndex + 1;
                 console.log(trackNr);
                 console.log(album.image);
-                document.getElementById("titleH1").innerHTML = album.tracks[trackIndex];
-			    document.getElementById("AlbumPic").src = album.image;
-			    document.getElementById("albumH1").innerHTML = album.title;
-			    document.getElementById("trackNrH1").innerHTML = trackNr;
+                document.getElementById("titleText").textContent = album.tracks[trackIndex];
+                document.getElementById("AlbumPic").src = album.image;
+                document.getElementById("albumText").textContent = album.title;
+                document.getElementById("trackNrText").textContent = trackNr;
                 const textElements = document.getElementsByClassName('albumDetails');
                 const chosenColor = pickedColor || album.color; // culoarea din picker are prioritate fata de cea a albumului
                 for (let i = 0; i < textElements.length; i++) {
@@ -226,87 +220,35 @@ function play()
         return; // nu are sens sa comparam mai departe
     }
     triesNr++;
-    diferentaA = randomAlbumNr - albumNr; // randomAlbumNr e de la 1 la length
+    const diferentaA = randomAlbumNr - albumNr; // randomAlbumNr e de la 1 la length
     console.log(diferentaA);
-	diferentaS = randomTrackNr - trackNr; // randomTrackNr e de la 1 la length
-	console.log(diferentaS);
-    if(diferentaA<=2 && diferentaA>0){
-        UpArrowAlbumName.style.display = "none";
-        DownArrowAlbumName.style.display = "none";
-        GoldenUpArrowAlbumName.style.display = "inline";
-        GoldenDownArrowAlbumName.style.display = "none";
-        CheckmarkAlbumName.style.display = "none";
-    }
-    else if(diferentaA>2){
-      UpArrowAlbumName.style.display = "inline";
-      DownArrowAlbumName.style.display = "none";
-      GoldenUpArrowAlbumName.style.display = "none";
-      GoldenDownArrowAlbumName.style.display = "none";
-      CheckmarkAlbumName.style.display = "none";
-    }
-    else if(diferentaA>=-2 && diferentaA<0){
-      UpArrowAlbumName.style.display = "none";
-      DownArrowAlbumName.style.display = "none";
-      GoldenUpArrowAlbumName.style.display = "none";
-      GoldenDownArrowAlbumName.style.display = "inline";
-      CheckmarkAlbumName.style.display = "none";
-    }
-    else if(diferentaA<-2){
-      UpArrowAlbumName.style.display = "none";
-      DownArrowAlbumName.style.display = "inline";
-      GoldenUpArrowAlbumName.style.display = "none";
-      GoldenDownArrowAlbumName.style.display = "none";
-      CheckmarkAlbumName.style.display = "none";
-    }
-    else if(diferentaA==0){
-      UpArrowAlbumName.style.display = "none";
-      DownArrowAlbumName.style.display = "none";
-      GoldenUpArrowAlbumName.style.display = "none";
-      GoldenDownArrowAlbumName.style.display = "none";
-      CheckmarkAlbumName.style.display = "inline";
-    }
-    if(diferentaS<=2 && diferentaS>0){
-      UpArrowTrackNr.style.display = "none";
-      DownArrowTrackNr.style.display = "none";
-      GoldenUpArrowTrackNr.style.display = "inline";
-      GoldenDownArrowTrackNr.style.display = "none";
-      CheckmarkTrackNr.style.display = "none";
-    }
-    else if(diferentaS>2){
-      UpArrowTrackNr.style.display = "inline";
-      DownArrowTrackNr.style.display = "none";
-      GoldenUpArrowTrackNr.style.display = "none";
-      GoldenDownArrowTrackNr.style.display = "none";
-      CheckmarkTrackNr.style.display = "none";
-    }
-    else if(diferentaS>=-2 && diferentaS<0){
-      UpArrowTrackNr.style.display = "none";
-      DownArrowTrackNr.style.display = "none";
-      GoldenUpArrowTrackNr.style.display = "none";
-      GoldenDownArrowTrackNr.style.display = "inline";
-      CheckmarkTrackNr.style.display = "none";
-    }
-    else if(diferentaS<-2) {
-      UpArrowTrackNr.style.display = "none";
-      DownArrowTrackNr.style.display = "inline";
-      GoldenUpArrowTrackNr.style.display = "none";
-      GoldenDownArrowTrackNr.style.display = "none";
-      CheckmarkTrackNr.style.display = "none";
-    }
-    else if(diferentaS==0){
-      UpArrowTrackNr.style.display = "none";
-      DownArrowTrackNr.style.display = "none";
-      GoldenUpArrowTrackNr.style.display = "none";
-      GoldenDownArrowTrackNr.style.display = "none";
-      CheckmarkTrackNr.style.display = "inline";
-    }
-    if(diferentaA==0 && diferentaS==0){
-      // iconitele au fost puse deja corect de la if-urile de mai sus
+    const diferentaS = randomTrackNr - trackNr; // randomTrackNr e de la 1 la length
+    console.log(diferentaS);
+    showHint("AlbumName", diferentaA);
+    showHint("TrackNr", diferentaS);
+    if (diferentaA === 0 && diferentaS === 0) {
       win();
     }
 }
-let playerName = localStorage.getItem("loggedInUser") || "Player";
 
+// arata o singura iconita langa album / numarul piesei, in functie de diferenta fata de raspuns:
+// bifa = corect, sageata galbena = aproape (cel mult 2), sageata neagra = departe
+// (sus = raspunsul e mai mare / album mai nou, jos = mai mic / album mai vechi)
+function showHint(group, diff)
+{
+  const icons = ["UpArrow", "DownArrow", "GoldenUpArrow", "GoldenDownArrow", "Checkmark"];
+  let visible;
+  if (diff === 0) visible = "Checkmark";
+  else if (diff > 2) visible = "UpArrow";
+  else if (diff > 0) visible = "GoldenUpArrow";
+  else if (diff >= -2) visible = "GoldenDownArrow";
+  else visible = "DownArrow";
+
+  icons.forEach(icon => {
+    // id-urile din HTML sunt de forma UpArrowAlbumName, CheckmarkTrackNr etc.
+    document.getElementById(icon + group).style.display = icon === visible ? "inline" : "none";
+  });
+}
 
 function win() {
   const winContainer = document.getElementById("winContainer");

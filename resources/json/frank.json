@@ -45,6 +45,31 @@
         ]
       },
       {
+        "title": "Endless",
+        "image": "resources/img/Endless.jpg",
+        "color": "rgb(50, 50, 50)",
+        "tracks": [
+          "Device Control",
+          "At Your Best (You Are Love)",
+          "Alabama",
+          "Mine",
+          "U-N-I-T-Y",
+          "Ambience 001: In a Certain Way",
+          "Comme des Garçons",
+          "Ambience 002: Honeybaby",
+          "Wither",
+          "Hublots",
+          "In Here Somewhere",
+          "Slide on Me",
+          "Sideways",
+          "Florida",
+          "Deathwish (ASR)",
+          "Rushes",
+          "Rushes To",
+          "Higgs"
+        ]
+      },
+      {
         "title": "Blonde",
         "image": "resources/img/blonde.jpg",
         "color": "rgb(186, 186, 186)",
@@ -67,29 +92,6 @@
           "Godspeed",
           "Futura Free"
         ]
-      },
-      {
-      "title": "Endless",
-      "image": "resources/img/Endless.jpg",
-      "color": "rgb(50, 50, 50)",
-      "tracks": [
-        "At Your Best (You Are Love)",
-        "Alabama",
-        "Mine",
-        "U-N-I-T-Y",
-        "Ambience 001: In a Certain Way",
-        "Comme des Garçons",
-        "Ambience 002: Honeybaby",
-        "Wither",
-        "Hublots",
-        "In Here Somewhere",
-        "Slide on Me",
-        "Sideways",
-        "Florida",
-        "Rushes",
-        "Rushes To",
-        "Higgs"
-      ]
-    }
+      }
   ]
 }

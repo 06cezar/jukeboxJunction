@@ -6,6 +6,8 @@ window.onload = function() {
   const loginOutput = document.getElementById("login-output");
   const usernameInput = document.getElementById("username");
   const passwordInput = document.getElementById("password");
+  let lockoutCounter = 0; // cate secunde mai sunt pana se poate incerca din nou
+  let interval; // id-ul countdown-ului (setInterval), ca sa il putem opri
   const style = getComputedStyle(loginButton);
   if (style.display === "none") {
     console.log("Login button is hidden");
@@ -56,8 +58,7 @@ window.onload = function() {
           (u) => u.username === username && u.password === password
         );
         if (user) {
-          localStorage.setItem("loggedInUser", username);
-          localStorage.setItem("isLoggedIn", "true")
+          localStorage.setItem("loggedInUser", username); // singura cheie pt starea de login
           alert("You logged in successfully!");
           setTimeout(() => {
             console.log("You have logged in.");
@@ -92,7 +93,6 @@ window.onload = function() {
   logoutButton.addEventListener("click", () => {
     localStorage.removeItem("loggedInUser");
     alert("You logged out!");
-    localStorage.setItem("isLoggedIn", "false")
     setTimeout(() => {
       console.log("You have logged out.");
     }, 2000);

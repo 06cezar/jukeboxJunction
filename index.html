@@ -6,7 +6,9 @@
         <meta name="author" content="Jukebox Junction Team">
         <meta name="description" content="Jukebox Junction - Your One-Stop Shop for Vinyl, CDs, and Cassettes. Rediscover the magic of music with our curated collection.">
         <meta name="keywords" content="vinyl, records, CDs, cassettes, music store, record store, Jukebox Junction">
+        <link rel="stylesheet" href="resources/css/base.css">
         <link rel="stylesheet" href="resources/css/style.css">
+        <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Righteous&display=swap" rel="stylesheet">
         <script type="text/javascript" src="resources/js/loginindex.js"></script>
         <script type="text/javascript" src="resources/js/contact.js" defer></script>
         <link rel="icon" href="resources/icons/boombox.ico" type="image/x-icon">
@@ -145,22 +147,16 @@
                 </div>
                 <div class="footer-section">
                     <h3>Follow Us</h3>
-                    <p><a href="#">Instagram</a></p>
-                    <p><a href="#">Twitter</a></p>
-                    <p><a href="#">Facebook</a></p>
+                    <p><a href="https://www.instagram.com/" target="_blank" rel="noopener">Instagram</a></p>
+                    <p><a href="https://x.com/" target="_blank" rel="noopener">Twitter</a></p>
+                    <p><a href="https://www.facebook.com/" target="_blank" rel="noopener">Facebook</a></p>
                 </div>
                 <form class="contact-form">
                     <fieldset>
-                        <input type="text" name="name" minlength="3" maxlength="30" required placeholder="Your Name"
-                        oninvalid="this.setCustomValidity('Enter Your Name Here (3-30 characters)')"
-                        oninput="this.setCustomValidity('')" />
-                        <input type="email" name="email" placeholder="Your Email" required pattern="^[A-Za-z0-9._%+\-]+@[A-Za-z0-9\-]+(\.[A-Za-z0-9\-]+)*\.[A-Za-z]{2,}$"
-                        oninvalid="this.setCustomValidity('Enter a valid email address (e.g. name@example.com)')"
-                        oninput="this.setCustomValidity('')" />
+                        <input type="text" name="name" minlength="3" maxlength="30" required placeholder="Your Name" />
+                        <input type="email" name="email" placeholder="Your Email" required pattern="^[A-Za-z0-9._%+\-]+@[A-Za-z0-9\-]+(\.[A-Za-z0-9\-]+)*\.[A-Za-z]{2,}$" />
 
-                        <input type="tel" name="phone" id="tel" placeholder="Your Phone Number" required pattern="^\+?[0-9]{10,13}$"
-                        oninvalid="this.setCustomValidity('Enter your phone number (+40712345678 or 0712345678)')"
-                        oninput="this.setCustomValidity('')" />
+                        <input type="tel" name="phone" placeholder="Your Phone Number" required pattern="^\+?[0-9]{10,13}$" />
                         <textarea name="message" placeholder="Your Message" required></textarea>
                         <button type="submit">Submit</button>
                         <p id="form-output" class="form-output" aria-live="polite"></p>

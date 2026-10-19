@@ -1,29 +1,5 @@
-/* latin */
-@font-face {
-    font-family: 'Righteous';
-    font-style: normal;
-    font-weight: 400;
-    src: url(https://fonts.gstatic.com/s/righteous/v17/1cXxaUPXBpj2rGoU7C9WiHGF.woff2) format('woff2');
-    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-  }
-/* latin */
-@font-face {
-    font-family: 'Playfair Display';
-    font-style: normal;
-    font-weight: 400;
-    src: url(https://fonts.gstatic.com/s/playfairdisplay/v37/nuFiD-vYSZviVYUb_rj3ij__anPXDTzYgA.woff2) format('woff2');
-    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-  }
-:root{
-    --beige: rgb(222, 189, 151);
-    --crem: rgb(207, 185, 151);
-    --color2: beige;
-    --gray: rgb(68, 68, 68);
-    --darker-gray: rgb(51, 51, 51);
-    --righteous: 'Righteous', cursive;
-    --playfair: 'Playfair Display', serif;
-}
-
+/* fonturile (Righteous, Playfair Display) se incarca din index.html, de pe Google Fonts,
+   cu tot cu diacriticele romanesti (ă, ș, ț). Culorile, header-ul, meniul si vinilul sunt in base.css */
 body{
     font-family: var(--playfair);
     margin: 0;
@@ -34,23 +10,11 @@ body{
     background-color: var(--beige);
 }
 header {
-    background-color: var(--darker-gray);
-    color: var(--color2);
-    cursor: url('../svg/boombox.svg') 16 16, auto;
     padding-top: 20px;
-    text-align: center;
-    position: relative;
     min-height: 80px; /* foarte imp pt a fi responsive */
 }
 header h1 {
-    margin: 0;
     font-size: 3rem;
-    font-family: var(--righteous);
-}
-nav {
-    display: flex;
-    background-color: #444;
-    padding: 10px 0;
 }
 
 .links-container{
@@ -63,17 +27,9 @@ nav {
   }
 nav a{
     height: 100%;
-    padding: 0 20px;
     display: flex;
     align-items: center;
-    text-decoration: none;
-    color: var(--color2);
-    font-size: 1.2rem;
-    margin: 0 15px;
 }
-  nav a:hover{
-    background-color: black;
-  }
   nav svg{
     fill: var(--color2);
   }
@@ -102,35 +58,8 @@ nav a{
     margin: 0;
 }
 #vinyl-icon{
-    position: absolute;
     top: 25%;
-    left: 20px;
-    width: 60px;
-    height: 60px;
-    background: radial-gradient(circle, #000 60%, #555 65%, transparent 70%);
-    border-radius: 50%;
-    animation: spin 3s linear infinite;
     transform: translateY(-50%);
-}
-#vinyl-icon:before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 20px;
-    height: 20px;
-    background-color: #e63946;
-    border-radius: 50%;
-    transform: translate(-50%, -50%);
-}
-
-@keyframes spin {
-    0% {
-        transform: rotate(0deg);
-    }
-    100% {
-        transform: rotate(360deg);
-    }
 }
 #about {
     display: flex;
@@ -168,8 +97,6 @@ nav a{
 animation: spin 3s linear infinite;
 }
 footer {
-    background-color: #222;
-    color: #fff;
     padding: 40px 20px;
 }
 
@@ -337,6 +264,7 @@ section h2 {
   
   .contact-form input[type="text"],
   .contact-form input[type="email"],
+  .contact-form input[type="tel"],
   .contact-form textarea {
     width: 100%;
     margin-bottom: 1rem;
@@ -351,6 +279,7 @@ section h2 {
   
   .contact-form input[type="text"]:focus,
   .contact-form input[type="email"]:focus,
+  .contact-form input[type="tel"]:focus,
   .contact-form textarea:focus {
     border-color: #4CAF50;
     box-shadow: 0 0 5px rgba(76, 175, 80, 0.5);
@@ -385,10 +314,5 @@ section h2 {
   }
   .contact-form .form-output:empty {
     display: none;
-  }
-  #tel {
-    width: 80%; 
-    padding: 0.5rem; 
-    font-size: 16px; 
   }
   

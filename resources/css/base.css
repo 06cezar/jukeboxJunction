@@ -1,0 +1,79 @@
+/* stiluri comune pentru toate paginile: culori, fonturi, header, meniu, footer si vinilul din header.
+   Se incarca inaintea CSS-ului fiecarei pagini, care adauga sau suprascrie ce are nevoie. */
+:root{
+    --beige: rgb(222, 189, 151);
+    --crem: rgb(207, 185, 151);
+    --color2: beige;
+    --gray: rgb(68, 68, 68);
+    --darker-gray: rgb(51, 51, 51);
+    --righteous: 'Righteous', cursive;
+    --playfair: 'Playfair Display', serif;
+}
+
+header {
+    background-color: var(--darker-gray);
+    color: var(--color2);
+    cursor: url('../svg/boombox.svg') 16 16, auto;
+    text-align: center;
+    position: relative;
+}
+
+header h1 {
+    margin: 0;
+    font-family: var(--righteous);
+}
+
+nav {
+    display: flex;
+    background-color: var(--gray);
+    padding: 10px 0;
+}
+
+nav a {
+    padding: 0 20px;
+    margin: 0 15px;
+    color: var(--color2);
+    font-size: 1.2rem;
+    text-decoration: none;
+}
+
+nav a:hover {
+    background-color: black;
+}
+
+footer {
+    background-color: #222;
+    color: #fff;
+}
+
+/* vinilul care se invarte in header (pozitia verticala o da fiecare pagina) */
+#vinyl-icon {
+    position: absolute;
+    left: 20px;
+    width: 60px;
+    height: 60px;
+    background: radial-gradient(circle, #000 60%, #555 65%, transparent 70%);
+    border-radius: 50%;
+    animation: spin 3s linear infinite;
+}
+
+#vinyl-icon:before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 20px;
+    height: 20px;
+    background-color: #e63946;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}

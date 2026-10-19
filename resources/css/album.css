@@ -1,33 +1,5 @@
-/* stil comun pentru toate paginile de album, in acelasi stil cu pagina principala
-   (culorile, header-ul, meniul si vinilul sunt in base.css) */
-body {
-    font-family: var(--playfair);
-    margin: 0;
-    padding: 0;
-    background-color: var(--beige);
-    color: #333;
-    line-height: 1.6;
-}
-
-header {
-    padding: 20px 100px;
-}
-
-header h1 {
-    font-size: clamp(1.8rem, 4vw, 2.8rem);
-    font-weight: normal;
-}
-
-#vinyl-icon {
-    top: 50%;
-    margin-top: -30px; /* centrare verticala (transform e folosit de animatie) */
-}
-
-nav {
-    flex-wrap: wrap;
-    justify-content: center;
-}
-
+/* continutul paginilor de album (coperta, descriere, tracklist).
+   Header-ul, meniul si footer-ul vin din base.css si page.css */
 .album-container {
     column-count: 3;
     column-gap: 20px;
@@ -74,15 +46,6 @@ nav {
     content: "⭐ ";
 }
 
-footer {
-    text-align: center;
-    padding: 20px;
-}
-
-footer p {
-    margin: 0;
-}
-
 @media (max-width: 768px) {
     .album-container {
         column-count: 2;
@@ -94,15 +57,5 @@ footer p {
     .album-container {
         column-count: 1;
         padding: 16px;
-    }
-    header {
-        padding: 20px 16px;
-    }
-    #vinyl-icon {
-        display: none;
-    }
-    nav a {
-        margin: 0 5px;
-        padding: 0 10px;
     }
 }

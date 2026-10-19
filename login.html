@@ -3,31 +3,48 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Login</title>
+    <title>Log In - Jukebox Junction</title>
     <link rel="stylesheet" href="resources/css/base.css">
+    <link rel="stylesheet" href="resources/css/page.css">
     <link rel="stylesheet" href="resources/css/login.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Righteous&display=swap" rel="stylesheet">
     <link rel="icon" href="resources/icons/boombox.ico" type="image/x-icon">
     <script src="resources/js/login.js"></script>
   </head>
   <body>
-    <div class="login-container">
-      <form class="login-form">
-        <h2>Log In</h2>
-        <label for="username">Username:</label>
-        <input type="text" id="username" name="username" placeholder="Username" required/>
+    <header>
+      <span id="vinyl-icon"></span>
+      <h1>Jukebox Junction</h1>
+    </header>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="index.html#collection">Collection</a>
+      <a href="game.html">Game</a>
+    </nav>
 
-        <label for="password">Password:</label>
-        <input type="password" id="password" name="password" placeholder="Password" required/>
-        <div class="buttons-row">
-          <button type="submit" id="login-btn">Login</button>
-          <button type="button" id="logout-btn" style="display: none">
-            Logout
-          </button>
-        </div>
-        <p id="login-output"></p>
-        <p id="retry-timer"></p>
-      </form>
-      <a href="index.html" class="back-link">&larr; Back to Jukebox Junction</a>
-    </div>
+    <main>
+      <div class="login-container">
+        <form class="login-form">
+          <h2>Log In</h2>
+          <label for="username">Username:</label>
+          <input type="text" id="username" name="username" placeholder="Username" required/>
+
+          <label for="password">Password:</label>
+          <input type="password" id="password" name="password" placeholder="Password" required/>
+          <div class="buttons-row">
+            <button type="submit" id="login-btn">Login</button>
+            <button type="button" id="logout-btn" style="display: none">
+              Logout
+            </button>
+          </div>
+          <p id="login-output"></p>
+          <p id="retry-timer"></p>
+        </form>
+      </div>
+    </main>
+
+    <footer>
+      <p>&copy; 2024 Jukebox Junction</p>
+    </footer>
   </body>
 </html>

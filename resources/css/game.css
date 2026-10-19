@@ -1,40 +1,25 @@
-/* culorile, header-ul si meniul de baza sunt in base.css */
- body {
-    background-color: var(--darker-gray);
-    color: #eee;
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 2rem;
-  }
-  header {
-    padding-top: 20px;
-    min-height: 80px; /* foarte imp pt a fi responsive */
-}
-header h1 {
-  font-size: 3rem;
-}
+/* pagina jocului: fundalul, header-ul, meniul si footer-ul vin din base.css si page.css */
 
-nav {
-  flex-wrap: wrap;
-  justify-content: center;
+main.game {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 20px;
 }
 
 #instructions {
-  padding: 15px;
+  padding: 15px 20px;
   margin: 20px auto;
   max-width: 600px;
-  background-color: #f9f9f9;
-  border: 2px solid #ddd;
+  background-color: var(--color2);
   border-radius: 10px;
-  font-family: Arial, sans-serif;
-  font-size: 16px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  font-size: 1.05rem;
   color: #333;
   line-height: 1.5;
 }
 
-
 #instructions .highlight {
-  color: #4CAF50;
+  color: #2e7d32;
   font-weight: bold;
 }
 
@@ -46,11 +31,10 @@ nav {
 }
 
 #artistGallery h2 {
-  font-family: Arial, sans-serif;
-  font-size: 24px;
-  margin-bottom: 20px;
+  font-size: 1.8rem;
+  margin: 0 0 20px;
+  color: #222;
 }
-
 
 .gallery {
   display: flex;
@@ -69,8 +53,8 @@ nav {
   border: none;
   background: none;
   text-align: center;
-  font-family: Arial, sans-serif;
-  color: #ffffff;
+  font-family: inherit;
+  color: #333;
   cursor: pointer;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
@@ -88,10 +72,9 @@ nav {
 
 /* artistul ales acum */
 .artist-card.selected .artist-photo {
-  outline: 4px solid var(--beige);
+  outline: 4px solid var(--darker-gray);
   outline-offset: 2px;
 }
-
 
 .artist-photo {
   width: 100%;
@@ -105,224 +88,253 @@ nav {
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
 }
 
-
 .artist-card span {
   display: block;
   margin: 10px 0 16px;
-  font-size: 16px;
+  font-size: 1rem;
   font-weight: bold;
 }
 
-  .search-container {
-    display: inline-block;
-    position: relative;
-    width: 100%;
+.color-picker-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin: 10px 0;
+}
+
+/* tabla de joc: coperta + detaliile ghicirii. Fundalul ramane bej (ca inainte),
+   ca textul colorat cu culoarea fiecarui album sa se vada la fel */
+.container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-around;
+  align-items: flex-start;
+  gap: 2rem;
+  padding: 30px;
+  margin: 2rem auto;
+  height: 500px;
+  max-width: 90%;
+  background-color: var(--beige);
+  border: 2px solid var(--darker-gray);
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+#AlbumPicBox {
+  position: relative;
+  width: 40vw;
+  aspect-ratio: 1 / 1;
+  max-width: 500px;
+  border: 2px solid #fff;
+  box-sizing: border-box;
+}
+
+#AlbumPic {
+  display: block;
+  width: 100%;
+}
+
+#AlbumDetailsBox {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 0.5rem;
+  padding: 1rem;
+  max-width: 300px;
+}
+
+#AlbumDetailsBox > div {
+  margin-bottom: 0.3rem;
+}
+
+.detail-label {
+  color: #222;
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+
+/* textul ghicirii (titlu, album, nr. piesa) */
+.albumDetails {
+  font-family: 'Mynerve', cursive;
+  font-size: 18px;
+  font-weight: bold;
+  text-align: center;
+  margin: 0.67em 0;
+}
+
+/* svg-ul cu <symbol>-uri nu trebuie sa ocupe loc in pagina */
+.icon-sprite {
+  position: absolute;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+}
+
+/* sagetile si bifa: ascunse pana la prima ghicire (JS le afiseaza cu display: inline) */
+.hint-icon {
+  display: none;
+  width: 16px;
+  height: 16px;
+}
+
+/* cautarea piesei: acelasi stil ca la campurile formularului de contact */
+.search-container {
+  display: inline-block;
+  position: relative;
+  width: 100%;
+}
+
+#searchInput {
+  width: 100%;
+  box-sizing: border-box; /* latimea include padding-ul, ca sa nu iasa din cutie */
+  padding: 10px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #fff;
+  color: #333;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+#searchInput:focus {
+  border-color: #4CAF50;
+  box-shadow: 0 0 5px rgba(76, 175, 80, 0.5);
+  outline: none;
+}
+
+#searchInput::placeholder {
+  color: #999;
+}
+
+#dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  box-sizing: border-box;
+  background-color: #fff;
+  color: #333;
+  border: 1px solid #ccc;
+  border-top: none;
+  border-radius: 0 0 5px 5px;
+  max-height: 200px;
+  overflow-y: auto;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  display: none;
+  z-index: 999;
+}
+
+.suggestion {
+  padding: 10px;
+  cursor: pointer;
+  border-bottom: 1px solid #eee;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.suggestion:hover {
+  background-color: var(--color2);
+}
+
+/* acelasi verde ca butoanele Submit si Login */
+#submitbtn {
+  margin-top: 0.2rem;
+  padding: 0.5rem 1.5rem;
+  font-size: 1rem;
+  color: #fff;
+  background-color: #4CAF50;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#submitbtn:hover {
+  background-color: #45a049;
+}
+
+#winContainer {
+  display: none;
+  padding: 20px;
+  border: 2px solid #4CAF50;
+  background-color: var(--color2);
+  text-align: center;
+  max-width: 500px;
+  margin: 50px auto;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+#winContainer h1 {
+  font-family: 'Mynerve', cursive;
+  margin: 0 0 15px;
+  font-size: 24px;
+  color: #2e7d32;
+}
+
+#winContainer h2, #winContainer p {
+  margin-bottom: 20px;
+  font-size: 18px;
+  color: #000000;
+}
+
+#playAgainBtn {
+  padding: 10px 20px;
+  font-size: 16px;
+  color: #fff;
+  background-color: #4CAF50;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#playAgainBtn:hover {
+  background-color: #45a049;
+}
+
+.statsMessage {
+  margin-bottom: 20px;
+  font-size: 18px;
+  color: #000000;
+}
+
+/* lista cu discografia artistului ales, sub joc */
+#output {
+  max-width: 800px;
+  margin: 40px auto 0;
+  color: #333;
+}
+
+#output h2 {
+  font-size: 1.5rem;
+  color: #222;
+}
+
+#output hr {
+  border: none;
+  border-top: 1px solid rgba(0, 0, 0, 0.2);
+  margin: 20px 0;
+}
+
+/* pe telefon: coperta deasupra detaliilor, nu una langa alta */
+@media (max-width: 768px) {
+  main.game {
+    padding: 16px;
   }
-
-
-  #searchInput {
-    width: 100%;
-    box-sizing: border-box; /* latimea include padding-ul, ca sa nu iasa din cutie */
-    padding: 10px;
-    font-size: 0.8rem;
-    border: 1px solid #444;
-    border-radius: 4px;
-    outline: none;
-    background-color: #333;
-    color: #eee;
-  }
-  #searchInput::placeholder {
-    color: #999;
-  }
-
-
-  #dropdown {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    width: 100%;
-    background-color: #222;
-    border: 1px solid #444;
-    border-top: none;
-    border-radius: 0 0 4px 4px;
-    max-height: 200px;
-    overflow-y: auto;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.4);
-    display: none;
-    z-index: 999;
-  }
-
-
-  .suggestion {
-    padding: 10px;
-    cursor: pointer;
-    border-bottom: 1px solid #333;
-    transition: background-color 0.2s ease-in-out;
-  }
-
-
-  .suggestion:hover {
-    background-color: #444;
-  }
-
-
-  h1 {
-    font-family: 'Mynerve', cursive;
-    font-size: 18px;
-    text-align: center;
-  }
-
-  /* textul ghicirii (titlu, album, nr. piesa) */
-  .albumDetails {
-    font-family: 'Mynerve', cursive;
-    font-size: 18px;
-    font-weight: bold;
-    text-align: center;
-    margin: 0.67em 0;
-  }
-
-
   .container {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    justify-content: space-around;
-    align-items: flex-start;
-    gap: 2rem;
-    padding: 30px;
-    margin: 2rem;
-    height: 500px;
-    max-width: 90%;
-    background-color: var(--beige);
-    border: 2px solid;
+    flex-direction: column;
+    align-items: stretch;
+    height: auto;
+    max-width: none;
+    margin: 1rem 0;
+    padding: 16px;
   }
-
-
-
   #AlbumPicBox {
-    position: relative;
-    width: 40vw;
-    aspect-ratio: 1 / 1;
-    max-width: 500px;
-    border: 2px solid #fff;
-    box-sizing: border-box;
-  }
-  #AlbumPic{
     width: 100%;
   }
-
   #AlbumDetailsBox {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-start;
-    gap: 0.5rem;
-    padding: 1rem;
-    max-width: 300px;
+    max-width: none;
   }
-
-
-  .detail-label {
-    color:#222;
-    font-weight: bold;
-    font-size: 1.5rem;
-  }
-  .DetailsBorder{
-    border-bottom: 10px solid pink;
-  }
-
-  /* svg-ul cu <symbol>-uri nu trebuie sa ocupe loc in pagina */
-  .icon-sprite {
-    position: absolute;
-    width: 0;
-    height: 0;
-    overflow: hidden;
-  }
-
-  /* sagetile si bifa: ascunse pana la prima ghicire (JS le afiseaza cu display: inline) */
-  .hint-icon {
-    display: none;
-    width: 16px;
-    height: 16px;
-  }
-
-
-  #AlbumDetailsBox > div {
-    margin-bottom: 0.3rem;
-  }
-
-  #submitbtn {
-    margin-top: 0.2rem;
-    padding: 0.5rem 0.5rem;
-    cursor: pointer;
-    font-size: 1rem;
-    background-color: var(--beige);
-    box-shadow: 2px 4.5px #222;
-  }
-  #winContainer {
-    display: none;
-    padding: 20px;
-    border: 2px solid #4CAF50;
-    background-color: #f9f9f9;
-    text-align: center;
-    max-width: 500px;
-    margin: 50px auto;
-    border-radius: 10px;
-    font-family: Arial, sans-serif;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  }
-
-  #winContainer h1 {
-    margin-bottom: 15px;
-    font-size: 24px;
-    color: #4CAF50;
-  }
-
-  #winContainer h2, #winContainer p {
-    margin-bottom: 20px;
-    font-size: 18px;
-    color: #000000;
-  }
-
-  #playAgainBtn {
-    padding: 10px 20px;
-    font-size: 16px;
-    color: #fff;
-    background-color: #4CAF50;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-
-  #playAgainBtn:hover {
-    background-color: #45a049;
-  }
-  .statsMessage {
-    margin-bottom: 20px;
-    font-size: 18px;
-    color: #000000;
-  }
-
-  /* pe telefon: coperta deasupra detaliilor, nu una langa alta */
-  @media (max-width: 768px) {
-    body {
-      padding: 1rem;
-    }
-    header h1 {
-      font-size: 2rem;
-    }
-    .container {
-      flex-direction: column;
-      align-items: stretch;
-      height: auto;
-      max-width: none;
-      margin: 1rem 0;
-      padding: 16px;
-    }
-    #AlbumPicBox {
-      width: 100%;
-    }
-    #AlbumDetailsBox {
-      max-width: none;
-    }
-  }
+}

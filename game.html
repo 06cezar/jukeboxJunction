@@ -6,8 +6,9 @@
   <title>Jukebox Junction Game</title>
   <script type="text/javascript" src="resources/js/script.js"></script>
   <link rel="stylesheet" href="resources/css/base.css">
+  <link rel="stylesheet" href="resources/css/page.css">
   <link rel="stylesheet" href="resources/css/game.css">
-  <link href="https://fonts.googleapis.com/css2?family=Mynerve&family=Righteous&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Mynerve&family=Playfair+Display:wght@400;700&family=Righteous&display=swap" rel="stylesheet">
   <link rel="icon" href="resources/icons/boombox.ico" type="image/x-icon">
 </head>
 <body>
@@ -25,12 +26,16 @@
         </symbol>
     </svg>
     <header>
+        <span id="vinyl-icon"></span>
         <h1>Jukebox Junction Game</h1>
     </header>
     <nav>
         <a href="index.html">Home</a>
         <a href="index.html#collection">Collection</a>
+        <a href="game.html">Game</a>
     </nav>
+
+    <main class="game">
     <div id="instructions">
         <p>
           A random song has been generated from a specific artist. Your goal is to guess the song! 
@@ -62,8 +67,10 @@
         </div>
       </div>
             
-    <label for="colorPicker">Choose text color:</label>
-    <input type="color" id="colorPicker" />
+    <div class="color-picker-row">
+        <label for="colorPicker">Choose text color:</label>
+        <input type="color" id="colorPicker" />
+    </div>
   <div class="container" id="outerBox">
 
     <div id="AlbumPicBox">
@@ -75,12 +82,12 @@
     <div id = "AlbumDetailsBox">
 
         <span class="detail-label">Title:</span>
-            <div id="titleBorderBox" class="DetailsBorder">
+            <div id="titleBorderBox">
                 <p id="titleText" class="albumDetails"></p>
             </div>
 
         <span class="detail-label">Album:</span>
-            <div id="AlbumBorderBox" class="DetailsBorder">
+            <div id="AlbumBorderBox">
                 <p id="albumText" class="albumDetails"></p>
                 <svg id="UpArrowAlbumName" class="hint-icon" fill="#111111"><use href="#icon-arrow-up"/></svg>
                 <svg id="DownArrowAlbumName" class="hint-icon" fill="#000000"><use href="#icon-arrow-down"/></svg>
@@ -89,7 +96,7 @@
                 <svg id="CheckmarkAlbumName" class="hint-icon" fill="#40C408"><use href="#icon-checkmark"/></svg>
             </div>
         <span class="detail-label">Track Number:</span>
-            <div id="trackNrBorderBox" class="DetailsBorder">
+            <div id="trackNrBorderBox">
                 <p id="trackNrText" class="albumDetails"></p>
                 <svg id="UpArrowTrackNr" class="hint-icon" fill="#111111"><use href="#icon-arrow-up"/></svg>
                 <svg id="DownArrowTrackNr" class="hint-icon" fill="#000000"><use href="#icon-arrow-down"/></svg>
@@ -110,5 +117,10 @@
                 <button id="playAgainBtn">Play Again</button>
               </div>
       <div id="output">Loading...</div>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Jukebox Junction</p>
+    </footer>
 </body>
 </html>

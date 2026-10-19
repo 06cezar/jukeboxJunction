@@ -265,6 +265,18 @@ section h2 {
     font-size: 1.2rem;
     margin: 10px;
 }
+/* cardurile sunt link-uri spre paginile albumelor: fara albastru si subliniere */
+#collection a {
+    color: inherit;
+    text-decoration: none;
+}
+#collection a .card {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+#collection a:hover .card {
+    transform: translateY(-4px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
 
   @media(max-width: 530px){
     #vinyl-icon{
@@ -365,6 +377,14 @@ section h2 {
   
   .contact-form button:hover {
     background-color: #45a049;
+  }
+  .contact-form .form-output {
+    margin: 1rem 0 0;
+    font-size: 1rem;
+    color: #2e7d32;
+  }
+  .contact-form .form-output:empty {
+    display: none;
   }
   #tel {
     width: 80%; 

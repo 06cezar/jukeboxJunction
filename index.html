@@ -8,6 +8,7 @@
         <meta name="keywords" content="vinyl, records, CDs, cassettes, music store, record store, Jukebox Junction">
         <link rel="stylesheet" href="resources/css/style.css">
         <script type="text/javascript" src="resources/js/loginindex.js"></script>
+        <script type="text/javascript" src="resources/js/contact.js" defer></script>
         <link rel="icon" href="resources/icons/boombox.ico" type="image/x-icon">
         <title>Jukebox Junction</title>
     </head>
@@ -63,46 +64,62 @@
                         <p>Frank Ocean</p>
                     </div>
                     </a>
+                    <a href="grace.html" target="_blank">
                     <div class="card">
                         <img src="resources/img/grace.jpg" alt="Grace - Jeff Buckley">
                         <h3>Grace</h3>
                         <p>Jeff Buckley</p>
                     </div>
+                    </a>
+                    <a href="cigarettes_after_sex.html" target="_blank">
                     <div class="card">
                         <img src="resources/img/cas.jpg" alt="Cigarettes After Sex">
                         <h3>Cigarettes After Sex</h3>
                         <p>Cigarettes After Sex</p>
                     </div>
+                    </a>
+                    <a href="igor.html" target="_blank">
                     <div class="card">
                         <img src="resources/img/igor.jpg" alt="Igor - Tyler, The Creator">
                         <h3>Igor</h3>
                         <p>Tyler, The Creator</p>
                     </div>
+                    </a>
+                    <a href="the_queen_is_dead.html" target="_blank">
                     <div class="card">
                         <img src="resources/img/the_queen_is_dead.png" alt="The Queen Is Dead - The Smiths">
                         <h3>The Queen Is Dead</h3>
                         <p>The Smiths</p>
                     </div>
+                    </a>
+                    <a href="master_of_puppets.html" target="_blank">
                     <div class="card">
                         <img src="resources/img/master_of_puppets.jpg" alt="Master of Puppets - Metallica">
                         <h3>Master of Puppets</h3>
                         <p>Metallica</p>
                     </div>
+                    </a>
+                    <a href="ocean_blvd.html" target="_blank">
                     <div class="card">
                         <img src="resources/img/tunnel.jpg" alt="Did you know that there's a tunnel under ocean blvd - Lana Del Rey">
                         <h3>Did you know that there's a tunnel under ocean blvd</h3>
                         <p>Lana del Rey</p>
                     </div>
+                    </a>
+                    <a href="noua.html" target="_blank">
                     <div class="card">
                         <img src="resources/img/noua.jpg" alt="Nouă - Byron">
                         <h3>Nouă</h3>
                         <p>Byron</p>
                     </div>
+                    </a>
+                    <a href="currents.html" target="_blank">
                     <div class="card">
                         <img src="resources/img/currents.jpg" alt="Currents - Tame Impala">
                         <h3>Currents</h3>
                         <p>Tame Impala</p>
                     </div>
+                    </a>
                 </div>
             </section>
         </main>
@@ -134,18 +151,19 @@
                 </div>
                 <form class="contact-form">
                     <fieldset>
-                        <input type="text" minlength="3" maxlength="30" required placeholder="Your Name"
+                        <input type="text" name="name" minlength="3" maxlength="30" required placeholder="Your Name"
                         oninvalid="this.setCustomValidity('Enter Your Name Here (3-30 characters)')"
                         oninput="this.setCustomValidity('')" />
-                        <input type="email" placeholder="Your Email" required pattern="^[a-z0-9.]+@[a-z]+\.[a-z]+$"
-                        oninvalid="this.setCustomValidity('Enter Your Email here(mail@service.domain, all lowercase, dots or numbers)')"
+                        <input type="email" name="email" placeholder="Your Email" required pattern="^[A-Za-z0-9._%+\-]+@[A-Za-z0-9\-]+(\.[A-Za-z0-9\-]+)*\.[A-Za-z]{2,}$"
+                        oninvalid="this.setCustomValidity('Enter a valid email address (e.g. name@example.com)')"
                         oninput="this.setCustomValidity('')" />
 
-                        <input type="tel" id="tel" placeholder="Your Phone Number" required pattern="^\+?[0-9]{10,13}$"
+                        <input type="tel" name="phone" id="tel" placeholder="Your Phone Number" required pattern="^\+?[0-9]{10,13}$"
                         oninvalid="this.setCustomValidity('Enter your phone number (+40712345678 or 0712345678)')"
                         oninput="this.setCustomValidity('')" />
-                        <textarea placeholder="Your Message" required></textarea>
+                        <textarea name="message" placeholder="Your Message" required></textarea>
                         <button type="submit">Submit</button>
+                        <p id="form-output" class="form-output" aria-live="polite"></p>
                     </fieldset>
                 </form>
             </div>

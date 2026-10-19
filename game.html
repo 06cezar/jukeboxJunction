@@ -5,6 +5,7 @@
   <title>Jukebox Junction Game</title>
   <script type="text/javascript" src="resources/js/script.js"></script>
   <link rel="stylesheet" href="resources/css/game.css">
+  <link href="https://fonts.googleapis.com/css2?family=Mynerve&family=Righteous&display=swap" rel="stylesheet">
 </head>
 <body>
     <header>
@@ -20,7 +21,7 @@
         <p>Yellow arrows indicate you're close to the correct answer!</p>
       </div>
       <div id="artistGallery">
-        <h2>Select an Artist, and Refresh the Page</h2>
+        <h2>Select an Artist</h2>
         <div class="gallery">
           <div class="artist-card" id="frank">
             <img src="resources/img/frankocean.jpg" alt="Frank Ocean" class="artist-photo">
@@ -46,16 +47,14 @@
   <div class="container" id="outerBox">
 
     <div id="AlbumPicBox">
-        
-        <i class="fa-solid fa-arrow-up fa-2x" id="UpArrowAlbumPic" style="display:none"></i>
-        <i class="fa-solid fa-arrow-down fa-2x" id="DownArrowAlbumPic"  style="display:none"></i>
-        <div id="AlbumPicDiv"><img id="AlbumPic"></img></div>
+
+        <div id="AlbumPicDiv"><img id="AlbumPic" alt=""></div>
 
     </div>
 
     <div id = "AlbumDetailsBox">
 
-        <label for=”titleBorderBox”> Title: </label>
+        <label for="titleBorderBox"> Title: </label>
             <div id="titleBorderBox" class="DetailsBorder">
                 <h1 id="titleH1" class="albumDetails"> </h1>
             </div>
@@ -66,23 +65,23 @@
                 </h1>
                 <svg fill="#111111" height="16px" width="16px" version="1.1" id="UpArrowAlbumName" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" 
                     viewBox="0 0 330 330" xml:space="preserve" style="display:none">
-                <path id="XMLID_21_" d="M213.107,41.894l-37.5-37.5c-5.857-5.858-15.355-5.858-21.213,0l-37.5,37.5
+                <path d="M213.107,41.894l-37.5-37.5c-5.857-5.858-15.355-5.858-21.213,0l-37.5,37.5
                     c-4.29,4.29-5.573,10.742-3.252,16.347c2.322,5.605,7.792,9.26,13.858,9.26H150V315c0,8.284,6.716,15,15,15c8.284,0,15-6.716,15-15
                     V67.5h22.5c6.067,0,11.537-3.655,13.858-9.26C218.68,52.635,217.397,46.184,213.107,41.894z"/>
                 </svg><svg fill="#000000" height="16px" width="16px" version="1.1" id="DownArrowAlbumName" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" 
                 viewBox="0 0 330 330" xml:space="preserve" style="display:none">
-                <path id="XMLID_24_" d="M216.358,271.76c-2.322-5.605-7.792-9.26-13.858-9.26H180V15c0-8.284-6.716-15-15-15
+                <path d="M216.358,271.76c-2.322-5.605-7.792-9.26-13.858-9.26H180V15c0-8.284-6.716-15-15-15
                 c-8.284,0-15,6.716-15,15v247.5h-22.5c-6.067,0-11.537,3.655-13.858,9.26c-2.321,5.605-1.038,12.057,3.252,16.347l37.5,37.5
                 C157.322,328.536,161.161,330,165,330s7.678-1.464,10.607-4.394l37.5-37.5C217.396,283.816,218.68,277.365,216.358,271.76z"/>
                 </svg>
                 <svg fill="#FBFF00" height="16px" width="16px" version="1.1" id="GoldenUpArrowAlbumName" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" 
                     viewBox="0 0 330 330" xml:space="preserve" style="display:none">
-                <path id="XMLID_21__" d="M213.107,41.894l-37.5-37.5c-5.857-5.858-15.355-5.858-21.213,0l-37.5,37.5
+                <path d="M213.107,41.894l-37.5-37.5c-5.857-5.858-15.355-5.858-21.213,0l-37.5,37.5
                     c-4.29,4.29-5.573,10.742-3.252,16.347c2.322,5.605,7.792,9.26,13.858,9.26H150V315c0,8.284,6.716,15,15,15c8.284,0,15-6.716,15-15
                     V67.5h22.5c6.067,0,11.537-3.655,13.858-9.26C218.68,52.635,217.397,46.184,213.107,41.894z"/>
                 </svg><svg fill="#FBFF00" height="16px" width="16px" version="1.1" id="GoldenDownArrowAlbumName" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" 
                 viewBox="0 0 330 330" xml:space="preserve" style="display:none">
-                <path id="XMLID_24__" d="M216.358,271.76c-2.322-5.605-7.792-9.26-13.858-9.26H180V15c0-8.284-6.716-15-15-15
+                <path d="M216.358,271.76c-2.322-5.605-7.792-9.26-13.858-9.26H180V15c0-8.284-6.716-15-15-15
                 c-8.284,0-15,6.716-15,15v247.5h-22.5c-6.067,0-11.537,3.655-13.858,9.26c-2.321,5.605-1.038,12.057,3.252,16.347l37.5,37.5
                 C157.322,328.536,161.161,330,165,330s7.678-1.464,10.607-4.394l37.5-37.5C217.396,283.816,218.68,277.365,216.358,271.76z"/>
                 </svg>
@@ -110,28 +109,28 @@
                    </g>
                    </svg>
             </div>
-        <label for=”trackNrBorderBox”> Track Number: </label>
+        <label for="trackNrBorderBox"> Track Number: </label>
             <div id="trackNrBorderBox" class="DetailsBorder">
             <h1 id="trackNrH1" class="albumDetails"></h1>
             <svg fill="#111111" height="16px" width="16px" version="1.1" id="UpArrowTrackNr" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" 
             viewBox="0 0 330 330" xml:space="preserve" style="display:none">
-        <path id="XMLID_21_" d="M213.107,41.894l-37.5-37.5c-5.857-5.858-15.355-5.858-21.213,0l-37.5,37.5
+        <path d="M213.107,41.894l-37.5-37.5c-5.857-5.858-15.355-5.858-21.213,0l-37.5,37.5
             c-4.29,4.29-5.573,10.742-3.252,16.347c2.322,5.605,7.792,9.26,13.858,9.26H150V315c0,8.284,6.716,15,15,15c8.284,0,15-6.716,15-15
             V67.5h22.5c6.067,0,11.537-3.655,13.858-9.26C218.68,52.635,217.397,46.184,213.107,41.894z"/>
         </svg><svg fill="#000000" height="16px" width="16px" version="1.1" id="DownArrowTrackNr" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" 
         viewBox="0 0 330 330" xml:space="preserve" style="display:none">
-        <path id="XMLID_24_" d="M216.358,271.76c-2.322-5.605-7.792-9.26-13.858-9.26H180V15c0-8.284-6.716-15-15-15
+        <path d="M216.358,271.76c-2.322-5.605-7.792-9.26-13.858-9.26H180V15c0-8.284-6.716-15-15-15
         c-8.284,0-15,6.716-15,15v247.5h-22.5c-6.067,0-11.537,3.655-13.858,9.26c-2.321,5.605-1.038,12.057,3.252,16.347l37.5,37.5
         C157.322,328.536,161.161,330,165,330s7.678-1.464,10.607-4.394l37.5-37.5C217.396,283.816,218.68,277.365,216.358,271.76z"/>
         </svg>
         <svg fill="#FBFF00" height="16px" width="16px" version="1.1" id="GoldenUpArrowTrackNr" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" 
             viewBox="0 0 330 330" xml:space="preserve" style="display:none">
-        <path id="XMLID_21__" d="M213.107,41.894l-37.5-37.5c-5.857-5.858-15.355-5.858-21.213,0l-37.5,37.5
+        <path d="M213.107,41.894l-37.5-37.5c-5.857-5.858-15.355-5.858-21.213,0l-37.5,37.5
             c-4.29,4.29-5.573,10.742-3.252,16.347c2.322,5.605,7.792,9.26,13.858,9.26H150V315c0,8.284,6.716,15,15,15c8.284,0,15-6.716,15-15
             V67.5h22.5c6.067,0,11.537-3.655,13.858-9.26C218.68,52.635,217.397,46.184,213.107,41.894z"/>
         </svg><svg fill="#FBFF00" height="16px" width="16px" version="1.1" id="GoldenDownArrowTrackNr" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" 
         viewBox="0 0 330 330" xml:space="preserve" style="display:none">
-        <path id="XMLID_24__" d="M216.358,271.76c-2.322-5.605-7.792-9.26-13.858-9.26H180V15c0-8.284-6.716-15-15-15
+        <path d="M216.358,271.76c-2.322-5.605-7.792-9.26-13.858-9.26H180V15c0-8.284-6.716-15-15-15
         c-8.284,0-15,6.716-15,15v247.5h-22.5c-6.067,0-11.537,3.655-13.858,9.26c-2.321,5.605-1.038,12.057,3.252,16.347l37.5,37.5
         C157.322,328.536,161.161,330,165,330s7.678-1.464,10.607-4.394l37.5-37.5C217.396,283.816,218.68,277.365,216.358,271.76z"/>
         </svg>

@@ -1,0 +1,169 @@
+/* stil comun pentru toate paginile de album, in acelasi stil cu pagina principala (style.css) */
+:root{
+    --beige: rgb(222, 189, 151);
+    --crem: rgb(207, 185, 151);
+    --color2: beige;
+    --gray: rgb(68, 68, 68);
+    --darker-gray: rgb(51, 51, 51);
+    --righteous: 'Righteous', cursive;
+    --playfair: 'Playfair Display', serif;
+}
+
+body {
+    font-family: var(--playfair);
+    margin: 0;
+    padding: 0;
+    background-color: var(--beige);
+    color: #333;
+    line-height: 1.6;
+}
+
+header {
+    background-color: var(--darker-gray);
+    color: var(--color2);
+    cursor: url('../svg/boombox.svg') 16 16, auto;
+    text-align: center;
+    position: relative;
+    padding: 20px 100px;
+}
+
+header h1 {
+    margin: 0;
+    font-size: clamp(1.8rem, 4vw, 2.8rem);
+    font-family: var(--righteous);
+    font-weight: normal;
+}
+
+#vinyl-icon {
+    position: absolute;
+    top: 50%;
+    left: 20px;
+    width: 60px;
+    height: 60px;
+    margin-top: -30px; /* centrare verticala (transform e folosit de animatie) */
+    background: radial-gradient(circle, #000 60%, #555 65%, transparent 70%);
+    border-radius: 50%;
+    animation: spin 3s linear infinite;
+}
+
+#vinyl-icon:before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 20px;
+    height: 20px;
+    background-color: #e63946;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+nav {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    background-color: var(--gray);
+    padding: 10px 0;
+}
+
+nav a {
+    padding: 0 20px;
+    margin: 0 15px;
+    text-decoration: none;
+    color: var(--color2);
+    font-size: 1.2rem;
+}
+
+nav a:hover {
+    background-color: black;
+}
+
+.album-container {
+    column-count: 3;
+    column-gap: 20px;
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+}
+
+.column {
+    background-color: var(--color2);
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    break-inside: avoid;
+}
+
+.column img {
+    display: block;
+    width: 100%;
+    border-radius: 10px;
+}
+
+.column h2 {
+    font-size: 1.8rem;
+    margin: 0 0 10px;
+    color: #222;
+}
+
+.column p {
+    font-size: 1.1rem;
+    margin: 0 0 15px;
+    color: #444;
+}
+
+.column ol {
+    padding-left: 24px;
+    margin: 0;
+    font-size: 1rem;
+}
+
+/* piesele recomandate */
+.column li.highlight::before {
+    content: "⭐ ";
+}
+
+footer {
+    background-color: #222;
+    color: #fff;
+    text-align: center;
+    padding: 20px;
+}
+
+footer p {
+    margin: 0;
+}
+
+@media (max-width: 768px) {
+    .album-container {
+        column-count: 2;
+        column-gap: 15px;
+    }
+}
+
+@media (max-width: 530px) {
+    .album-container {
+        column-count: 1;
+        padding: 16px;
+    }
+    header {
+        padding: 20px 16px;
+    }
+    #vinyl-icon {
+        display: none;
+    }
+    nav a {
+        margin: 0 5px;
+        padding: 0 10px;
+    }
+}

@@ -6,50 +6,14 @@ var triesNr = 0;
 var songsGuessed = 0;
 var correctSong;
 var correctAlbum;
+var loadingArtist; // artistul care se incarca acum (ignoram raspunsurile vechi daca se schimba artistul repede)
+var pickedColor = null; // culoarea aleasa din color picker (null = folosim culoarea albumului)
 window.onload = function() {
   const savedArtist = localStorage.getItem("selectedArtist") || "tyler";
-  fetch(`resources/json/${savedArtist}.json`)
-      .then(response => response.json())
-      .then(data => {
-        document.getElementById("searchInput").placeholder = "Type a song...";
-        albums = data.discography; // datele din json (obiecte)
-        let html = '';
-        // iterez prin albume
-        for (let albumIndex = 0; albumIndex < albums.length; albumIndex++) {
-          const album = albums[albumIndex];
-          const albumNumber = albumIndex + 1;
-          
-          // afisez informatiile despre albume
-          html += `<h2>Album #${albumNumber}: ${album.title}</h2>`;
-          html += `<img src="${album.image}" width="200"><br><br>`;
-
-          // iterez prin track-uri
-          html += '<ol>'; // lista ordonata pt piese
-          for (let trackIndex = 0; trackIndex < album.tracks.length; trackIndex++) {
-            const trackTitle = album.tracks[trackIndex];
-            allTracks.push(trackTitle); // adaug titlul piesei in array
-            const trackNumber = trackIndex + 1; // indicii de la 0 la length - 1
-            html += `<li><strong>Track #${trackNumber}:</strong> ${trackTitle}</li>`;
-          }
-          html += '</ol><hr>';
-        }
-        randomAlbumNr = randomNr(albums.length); // nr random pt album (de la 1 la album nr ul ultimului album)
-        console.log(randomAlbumNr);
-        randomTrackNr = randomNr(albums[randomAlbumNr-1].tracks.length); // indicii array-ului sunt de la 0 - n-1
-        console.log(randomTrackNr);
-        console.log(albums[randomAlbumNr-1].tracks[randomTrackNr-1]);
-        console.log(albums);
-        document.getElementById('output').innerHTML = html;
-        correctSong = albums[randomAlbumNr-1].tracks[randomTrackNr-1];
-        correctAlbum = albums[randomAlbumNr-1].title;
-      })
-      .catch(err => {
-        console.error(err);
-        document.getElementById('output').innerText = 'Failed to load data.';
-      });
+  loadArtist(savedArtist);
       const searchInput = document.getElementById('searchInput');
 const dropdown = document.getElementById('dropdown');
-      
+
 searchInput.addEventListener('input', function() {
   const query = this.value.toLowerCase(); // facem filtrarea sa nu fie case-sensitive
 
@@ -88,24 +52,124 @@ searchInput.addEventListener('input', function() {
   });
 });
 
+// Enter trimite ghicirea, la fel ca butonul Guess!
+searchInput.addEventListener('keydown', function(e) {
+  if (e.key === 'Enter') {
+    dropdown.style.display = 'none';
+    play();
+  }
+});
+
 // ascunde dropdown-ul daca se apasa in afara
 document.addEventListener('click', function(e) {
-  if (!e.target.closest('.search-container')) { // target 
+  if (!e.target.closest('.search-container')) { // target
     dropdown.style.display = 'none';
+  }
+});
+
+// listener-ul pt color picker se pune o singura data, la incarcarea paginii
+const colorPicker = document.getElementById('colorPicker');
+colorPicker.addEventListener('input', function() {
+  pickedColor = colorPicker.value;
+  const textElements = document.getElementsByClassName('albumDetails');
+  for (let i = 0; i < textElements.length; i++) {
+    // aplic culoarea
+    textElements[i].style.color = pickedColor;
   }
 });
 const artistCards = document.querySelectorAll(".artist-card");
 
 artistCards.forEach((card) => {
   card.addEventListener("click", () => {
-    const selectedArtist = card.id; 
-    localStorage.setItem("selectedArtist", selectedArtist); 
+    const selectedArtist = card.id;
+    localStorage.setItem("selectedArtist", selectedArtist);
     console.log(`Selected artist saved: ${selectedArtist}`);
+    loadArtist(selectedArtist); // incarc piesele noului artist, fara refresh
   });
 });
 }
+function loadArtist(artist)
+{
+  loadingArtist = artist;
+  // marchez vizual artistul selectat
+  const artistCards = document.querySelectorAll(".artist-card");
+  artistCards.forEach((card) => {
+    card.classList.toggle("selected", card.id === artist);
+  });
+  resetBoard();
+  document.getElementById('output').innerText = 'Loading...';
+  fetch(`resources/json/${artist}.json`)
+      .then(response => response.json())
+      .then(data => {
+        if (artist !== loadingArtist) {
+          return; // intre timp s-a ales alt artist
+        }
+        document.getElementById("searchInput").placeholder = "Type a song...";
+        albums = data.discography; // datele din json (obiecte)
+        allTracks = []; // golesc piesele artistului anterior
+        let html = '';
+        // iterez prin albume
+        for (let albumIndex = 0; albumIndex < albums.length; albumIndex++) {
+          const album = albums[albumIndex];
+          const albumNumber = albumIndex + 1;
+
+          // afisez informatiile despre albume
+          html += `<h2>Album #${albumNumber}: ${album.title}</h2>`;
+          html += `<img src="${album.image}" width="200"><br><br>`;
+
+          // iterez prin track-uri
+          html += '<ol>'; // lista ordonata pt piese
+          for (let trackIndex = 0; trackIndex < album.tracks.length; trackIndex++) {
+            const trackTitle = album.tracks[trackIndex];
+            allTracks.push(trackTitle); // adaug titlul piesei in array
+            const trackNumber = trackIndex + 1; // indicii de la 0 la length - 1
+            html += `<li><strong>Track #${trackNumber}:</strong> ${trackTitle}</li>`;
+          }
+          html += '</ol><hr>';
+        }
+        console.log(albums);
+        document.getElementById('output').innerHTML = html;
+        pickRandomSong();
+      })
+      .catch(err => {
+        console.error(err);
+        document.getElementById('output').innerText = 'Failed to load data.';
+      });
+}
+function pickRandomSong()
+{
+  randomAlbumNr = randomNr(albums.length); // nr random pt album (de la 1 la album nr ul ultimului album)
+  console.log(randomAlbumNr);
+  randomTrackNr = randomNr(albums[randomAlbumNr-1].tracks.length); // indicii array-ului sunt de la 0 - n-1
+  console.log(randomTrackNr);
+  correctSong = albums[randomAlbumNr-1].tracks[randomTrackNr-1];
+  correctAlbum = albums[randomAlbumNr-1].title;
+  console.log(correctSong);
+}
+function resetBoard()
+{
+  // sterg ghicirea afisata
+  document.getElementById("titleH1").innerHTML = "";
+  document.getElementById("albumH1").innerHTML = "";
+  document.getElementById("trackNrH1").innerHTML = "";
+  document.getElementById("AlbumPic").removeAttribute("src");
+  document.getElementById("searchInput").value = "";
+  // ascund toate sagetile si bifele
+  const icons = document.querySelectorAll("#AlbumDetailsBox svg");
+  for (let i = 0; i < icons.length; i++) {
+    icons[i].style.display = "none";
+  }
+  // ascund containerul de win si sterg mesajul de stats (pt a nu se afisa de mai multe ori)
+  const winContainer = document.getElementById("winContainer");
+  const statsMessage = winContainer.querySelector("h2");
+  if (statsMessage) {
+    winContainer.removeChild(statsMessage);
+  }
+  winContainer.style.display = "none";
+  triesNr = 0;
+}
 function randomNr(y)
-{   
+{
     let x; // Math.random() returneaza un floating point pseudo-random din [0,1)
     x = Math.floor(Math.random() * y) + 1; // returnez partea intreaga a unui numar din [0,1) * y + 1 = [0,y) + 1 = [1, y+1) => [1,y]
     return x;
@@ -113,18 +177,9 @@ function randomNr(y)
 
 function play()
 {
-const colorPicker = document.getElementById('colorPicker');
-const textElements = document.getElementsByClassName('albumDetails');
-
-colorPicker.addEventListener('input', function() {
-
-  const chosenColor = colorPicker.value; 
-  for (let i = 0; i < textElements.length; i++) {
-    // aplic culoarea
-    textElements[i].style.color = chosenColor;
-  }
-});
-
+    if (!albums) {
+        return; // datele inca se incarca
+    }
     let albumNr;
     let trackNr;
     let UpArrowAlbumName = document.getElementById("UpArrowAlbumName");
@@ -138,7 +193,7 @@ colorPicker.addEventListener('input', function() {
     let GoldenDownArrowTrackNr= document.getElementById("GoldenDownArrowTrackNr");
     let CheckmarkTrackNr = document.getElementById("CheckmarkTrackNr");
     let guess = document.getElementById("searchInput").value;
-    guess = String(guess);
+    guess = String(guess).trim().toLowerCase(); // comparam fara spatii in plus si fara sa conteze literele mari/mici
     let diferentaA;
 	let diferentaS;
     for(let albumIndex = 0; albumIndex < albums.length; albumIndex++)
@@ -146,19 +201,19 @@ colorPicker.addEventListener('input', function() {
         let album = albums[albumIndex];
         for(let trackIndex = 0; trackIndex < album.tracks.length; trackIndex++)
         {
-            if(guess === album.tracks[trackIndex])
+            if(guess === album.tracks[trackIndex].toLowerCase())
             {
                 albumNr = albumIndex + 1;
                 console.log(albumNr);
                 trackNr = trackIndex + 1;
                 console.log(trackNr);
                 console.log(album.image);
-                document.getElementById("titleH1").innerHTML = guess;
+                document.getElementById("titleH1").innerHTML = album.tracks[trackIndex];
 			    document.getElementById("AlbumPic").src = album.image;
 			    document.getElementById("albumH1").innerHTML = album.title;
 			    document.getElementById("trackNrH1").innerHTML = trackNr;
                 const textElements = document.getElementsByClassName('albumDetails');
-                const chosenColor = album.color;
+                const chosenColor = pickedColor || album.color; // culoarea din picker are prioritate fata de cea a albumului
                 for (let i = 0; i < textElements.length; i++) {
                     // Apply the new color to each element
                     textElements[i].style.color = chosenColor;
@@ -166,12 +221,11 @@ colorPicker.addEventListener('input', function() {
             }
         }
     }
-    if (isNaN(albumNr)) { // fiind definita ca let, va avea valoarea NaN daca nu se gaseste niciun cantec cu titlul respectiv
-        alert("Are you sure you spelt the title correctly?")
+    if (albumNr === undefined) { // albumNr ramane undefined daca nu se gaseste niciun cantec cu titlul respectiv
+        alert("Are you sure you spelt the title correctly?");
+        return; // nu are sens sa comparam mai departe
     }
-    else{
-        triesNr++;
-    }
+    triesNr++;
     diferentaA = randomAlbumNr - albumNr; // randomAlbumNr e de la 1 la length
     console.log(diferentaA);
 	diferentaS = randomTrackNr - trackNr; // randomTrackNr e de la 1 la length
@@ -247,7 +301,7 @@ colorPicker.addEventListener('input', function() {
       CheckmarkTrackNr.style.display = "inline";
     }
     if(diferentaA==0 && diferentaS==0){
-      // iconitele au fost puse deja corect de la if-urile de mai sus 
+      // iconitele au fost puse deja corect de la if-urile de mai sus
       win();
     }
 }
@@ -283,29 +337,11 @@ function win() {
   statsMessage.classList.add("statsMessage");
   statsMessage.textContent = `Total Wins: ${totalWins}, Best Tries: ${bestTries}`;
   winContainer.appendChild(statsMessage); // adaug element in DOM
-  
+
 }
 
 function playAgain() {
-  
-  const winContainer = document.getElementById("winContainer");
-  const statsMessage = winContainer.querySelector("h2");
-
-  // sterg mesajul de stats din DOM (pt a nu se afisa de mai multe ori daca jucam iarasi)
-  if (statsMessage) {
-    winContainer.removeChild(statsMessage);
-  }
-
-  //ascund containerul
-  winContainer.style.display = "none";
-
+  resetBoard(); // ascunde containerul de win, sterge ghicirea anterioara si reseteaza triesNr
   console.log("Restarting the game...");
-  randomAlbumNr = randomNr(albums.length); // nr random pt album (de la 1 la album nr ul ultimului album)
-  console.log(randomAlbumNr);
-  randomTrackNr = randomNr(albums[randomAlbumNr-1].tracks.length); // indicii array-ului sunt de la 0 - n-1
-  console.log(randomTrackNr);
-  triesNr = 0;
-  correctSong = albums[randomAlbumNr-1].tracks[randomTrackNr-1];
-  correctAlbum = albums[randomAlbumNr-1].title;
-  console.log(correctSong);
+  pickRandomSong();
 }

@@ -5,6 +5,7 @@ window.onload = function() {
   
     loginDiv.addEventListener("click", () => {
       if (isLoggedIn) {
+        localStorage.removeItem("loggedInUser");
         localStorage.setItem("isLoggedIn", "false");
         loginDiv.textContent = "Login";
       } 

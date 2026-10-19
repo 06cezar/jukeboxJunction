@@ -5,35 +5,35 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Log In - Jukebox Junction</title>
     <link rel="stylesheet" href="resources/css/base.css">
-    <link rel="stylesheet" href="resources/css/page.css">
     <link rel="stylesheet" href="resources/css/login.css">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Righteous&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Righteous&display=swap" rel="stylesheet">
     <link rel="icon" href="resources/icons/boombox.ico" type="image/x-icon">
+    <script src="resources/js/loginindex.js"></script>
     <script src="resources/js/login.js"></script>
   </head>
   <body>
-    <header>
-      <span id="vinyl-icon"></span>
-      <h1>Jukebox Junction</h1>
+    <header class="site-header">
+      <a href="index.html" class="logo"><span id="vinyl-icon"></span>Jukebox Junction</a>
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="index.html#collection">Collection</a>
+        <a href="game.html">Game</a>
+        <a href="login.html" id="login" aria-current="page">Log in</a>
+      </nav>
     </header>
-    <nav>
-      <a href="index.html">Home</a>
-      <a href="index.html#collection">Collection</a>
-      <a href="game.html">Game</a>
-    </nav>
 
     <main>
       <div class="login-container">
         <form class="login-form">
-          <h2>Log In</h2>
+          <h1>Log In</h1>
           <label for="username">Username:</label>
           <input type="text" id="username" name="username" placeholder="Username" required/>
 
           <label for="password">Password:</label>
           <input type="password" id="password" name="password" placeholder="Password" required/>
           <div class="buttons-row">
-            <button type="submit" id="login-btn">Login</button>
-            <button type="button" id="logout-btn" style="display: none">
+            <button type="submit" id="login-btn" class="btn">Login</button>
+            <button type="button" id="logout-btn" class="btn btn-red" style="display: none">
               Logout
             </button>
           </div>

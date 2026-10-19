@@ -1,79 +1,239 @@
-/* stiluri comune pentru toate paginile: culori, fonturi, header, meniu, footer si vinilul din header.
-   Se incarca inaintea CSS-ului fiecarei pagini, care adauga sau suprascrie ce are nevoie. */
-:root{
-    --beige: rgb(222, 189, 151);
-    --crem: rgb(207, 185, 151);
-    --color2: beige;
-    --gray: rgb(68, 68, 68);
-    --darker-gray: rgb(51, 51, 51);
-    --righteous: 'Righteous', cursive;
-    --playfair: 'Playfair Display', serif;
+/* stilurile comune ale site-ului (designul "magazin retro de viniluri"): culori, fonturi,
+   header-ul cu logo si meniu, footer-ul, butoanele si campurile de formular.
+   Fiecare pagina are apoi CSS-ul ei: style.css, album.css, game.css, login.css */
+:root {
+    --cream: #FBF3E4;
+    --peach: #F6D9B8;
+    --tan: rgb(222, 189, 151);
+    --red: #B3261E;
+    --red-dark: #8E1E17;
+    --mustard: #E8A317;
+    --mustard-dark: #D18F0C;
+    --brown: #3B1F1A;
+    --vinyl: #2B1B17;
+    --muted: #7A5A4F;
+    --white: #FFFFFF;
+    --font-display: 'Righteous', cursive;
+    --font-body: 'DM Sans', Arial, sans-serif;
+    --hard-shadow: 4px 4px 0 var(--brown); /* umbra "tare", ca la stickere */
 }
 
-header {
-    background-color: var(--darker-gray);
-    color: var(--color2);
-    cursor: url('../svg/boombox.svg') 16 16, auto;
-    text-align: center;
-    position: relative;
-}
-
-header h1 {
+body {
     margin: 0;
-    font-family: var(--righteous);
+    background-color: var(--cream);
+    color: var(--brown);
+    font-family: var(--font-body);
+    line-height: 1.6;
 }
 
-nav {
+h1, h2 {
+    font-family: var(--font-display);
+    font-weight: normal;
+    line-height: 1.2;
+}
+
+:focus-visible {
+    outline: 3px solid var(--red);
+    outline-offset: 2px;
+}
+
+/* header: logo-ul in stanga, meniul in dreapta */
+.site-header {
     display: flex;
-    background-color: var(--gray);
-    padding: 10px 0;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px 32px;
+    padding: 16px 32px;
+    background-color: var(--cream);
+    border-bottom: 3px solid var(--brown);
+    cursor: url('../svg/boombox.svg') 16 16, auto;
 }
 
-nav a {
-    padding: 0 20px;
-    margin: 0 15px;
-    color: var(--color2);
-    font-size: 1.2rem;
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-family: var(--font-display);
+    font-size: 1.9rem;
+    color: var(--red);
     text-decoration: none;
+    white-space: nowrap;
 }
 
-nav a:hover {
-    background-color: black;
-}
-
-footer {
-    background-color: #222;
-    color: #fff;
-}
-
-/* vinilul care se invarte in header (pozitia verticala o da fiecare pagina) */
+/* vinilul din logo, care se invarte */
 #vinyl-icon {
-    position: absolute;
-    left: 20px;
-    width: 60px;
-    height: 60px;
-    background: radial-gradient(circle, #000 60%, #555 65%, transparent 70%);
+    position: relative;
+    flex-shrink: 0;
+    width: 40px;
+    height: 40px;
     border-radius: 50%;
-    animation: spin 3s linear infinite;
+    background: repeating-radial-gradient(circle, var(--vinyl) 0 3px, #4A302A 3px 4px);
+    animation: spin 4s linear infinite;
 }
 
-#vinyl-icon:before {
+#vinyl-icon::before {
     content: '';
     position: absolute;
     top: 50%;
     left: 50%;
-    width: 20px;
-    height: 20px;
-    background-color: #e63946;
+    width: 14px;
+    height: 14px;
     border-radius: 50%;
+    background-color: var(--mustard);
     transform: translate(-50%, -50%);
 }
 
 @keyframes spin {
-    0% {
+    from {
         transform: rotate(0deg);
     }
-    100% {
+    to {
         transform: rotate(360deg);
+    }
+}
+
+nav {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+nav a {
+    margin: 0 12px;
+    padding: 4px 0;
+    color: var(--brown);
+    font-size: 1.05rem;
+    font-weight: 500;
+    text-decoration: none;
+    border-bottom: 2px solid transparent;
+    transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+nav a:hover,
+nav a[aria-current="page"] {
+    color: var(--red);
+    border-bottom-color: var(--red);
+}
+
+/* titlul paginii, sub header (paginile de album si jocul) */
+.page-title {
+    margin: 40px 16px 0;
+    text-align: center;
+    font-size: clamp(2rem, 5vw, 3rem);
+    color: var(--red);
+}
+
+.page-title span {
+    display: block;
+    margin-top: 8px;
+    font-family: var(--font-body);
+    font-size: 1.15rem;
+    color: var(--muted);
+}
+
+/* butoanele: pastila galben-mustar (principal) sau rosie (Logout, Call Us) */
+.btn {
+    display: inline-block;
+    padding: 0.7rem 1.6rem;
+    font-family: inherit;
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--brown);
+    background-color: var(--mustard);
+    border: 2px solid var(--brown);
+    border-radius: 999px;
+    box-shadow: 3px 3px 0 var(--brown);
+    text-decoration: none;
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.btn:hover {
+    background-color: var(--mustard-dark);
+    transform: translate(-1px, -1px);
+    box-shadow: 4px 4px 0 var(--brown);
+}
+
+.btn:active {
+    transform: translate(2px, 2px);
+    box-shadow: 1px 1px 0 var(--brown);
+}
+
+.btn-red {
+    color: var(--cream);
+    background-color: var(--red);
+}
+
+.btn-red:hover {
+    background-color: var(--red-dark);
+}
+
+.btn:disabled {
+    color: var(--muted);
+    background-color: var(--peach);
+    box-shadow: none;
+    transform: none;
+    cursor: not-allowed;
+}
+
+/* campurile de formular */
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="password"],
+textarea {
+    box-sizing: border-box;
+    padding: 0.7rem 0.9rem;
+    font-family: inherit;
+    font-size: 1rem;
+    color: var(--brown);
+    background-color: var(--white);
+    border: 2px solid var(--brown);
+    border-radius: 8px;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="tel"]:focus,
+input[type="password"]:focus,
+textarea:focus {
+    outline: none;
+    border-color: var(--red);
+    box-shadow: 0 0 0 3px rgba(179, 38, 30, 0.2);
+}
+
+::placeholder {
+    color: var(--muted);
+}
+
+footer {
+    padding: 24px 32px;
+    background-color: var(--vinyl);
+    color: var(--cream);
+    text-align: center;
+}
+
+footer p {
+    margin: 0;
+}
+
+footer a {
+    color: var(--peach);
+}
+
+/* pe telefon: logo-ul si meniul unul sub altul, centrate */
+@media (max-width: 600px) {
+    .site-header {
+        justify-content: center;
+        padding: 12px 16px;
+    }
+    .logo {
+        font-size: 1.6rem;
+    }
+    nav a {
+        margin: 0 8px;
     }
 }

@@ -6,6 +6,8 @@ A static website for a fictional record store that sells vinyl, CDs and cassette
 
 Built with plain HTML, CSS and JavaScript. There is no framework, build step or backend.
 
+The design is a retro record shop: cream, cherry red and mustard, Righteous for headings and DM Sans for text, cards with a hard "sticker" shadow and a vinyl that slides out from behind each album cover. Every page shares the same header (spinning vinyl logo and menu) and footer.
+
 ## Features
 
 **Home page** (`index.html`)
@@ -38,7 +40,7 @@ index.html, game.html, login.html     main pages
 <album>.html                          10 album pages
 resources/
   css/
-    base.css      shared colors, header, nav, footer, spinning vinyl (loaded first on every page)
+    base.css      shared design: colors, fonts, header with logo and menu, buttons, form fields, footer (loaded first on every page)
     style.css     home page
     album.css     album pages
     game.css      game page

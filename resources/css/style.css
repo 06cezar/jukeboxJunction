@@ -1,318 +1,376 @@
-/* fonturile (Righteous, Playfair Display) se incarca din index.html, de pe Google Fonts,
-   cu tot cu diacriticele romanesti (ă, ș, ț). Culorile, header-ul, meniul si vinilul sunt in base.css */
-body{
-    font-family: var(--playfair);
-    margin: 0;
-    padding: 0;
-    font-size: 2rem;
-    color: #333;
-    line-height: 1.6;
-    background-color: var(--beige);
-}
-header {
-    padding-top: 20px;
-    min-height: 80px; /* foarte imp pt a fi responsive */
-}
-header h1 {
-    font-size: 3rem;
+/* pagina principala: banner, despre noi, best sellers si footer-ul cu contact.
+   Culorile, fonturile, header-ul, butoanele si campurile sunt in base.css */
+
+/* meniul: pe ecran mare linkurile stau in dreapta logo-ului, pe telefon devin un sidebar */
+.links-container {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: flex-end;
 }
 
-.links-container{
-    height: 100%;
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-  }
-nav a{
-    height: 100%;
-    display: flex;
-    align-items: center;
+nav svg {
+    fill: var(--brown);
 }
-  nav svg{
-    fill: var(--color2);
-  }
-  #sidebar-active{
+
+#sidebar-active {
     display: none;
-  }
-  .open-sidebar-button, .close-sidebar-button{
+}
+
+.open-sidebar-button, .close-sidebar-button {
     display: none;
-  }
-  .quote {
-    background-image: linear-gradient(black, gray);
-    background-size: cover;
-    background-position: center;
-    color: #fff;
+    cursor: pointer;
+}
+
+main {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px;
+}
+
+section h2 {
+    margin: 0 0 24px;
+    font-size: 2rem;
     text-align: center;
-    padding: 100px 20px;
+    color: var(--red);
 }
 
-.quote h2 {
-    font-size: 2rem;
-    margin-bottom: 20px;
+/* banner-ul de sus */
+.hero {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px 40px;
+    margin: 32px 0;
+    padding: 40px 48px;
+    background-color: var(--red);
+    border: 2px solid var(--brown);
+    border-radius: 16px;
+    box-shadow: 6px 6px 0 var(--brown);
 }
 
-.quote p {
-    font-size: 1.2rem;
+.hero h1 {
+    margin: 0 0 8px;
+    font-size: clamp(2rem, 4.5vw, 3rem);
+    color: var(--cream);
+}
+
+.hero p {
     margin: 0;
+    font-size: 1.15rem;
+    color: var(--peach);
 }
-#vinyl-icon{
-    top: 25%;
-    transform: translateY(-50%);
-}
+
 #about {
     display: flex;
-    flex-direction: row;
     align-items: center;
-    text-align: center;
-    background-color: beige;
-    padding: 40px;
-    border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    max-width: 800px;
-    margin: 20px auto;
+    gap: 32px;
+    max-width: 900px;
+    margin: 48px auto;
+    padding: 32px 40px;
+    background-color: var(--white);
+    border: 2px solid var(--brown);
+    border-radius: 16px;
+    box-shadow: var(--hard-shadow);
 }
 
 #about h2 {
-    font-size: 2rem;
-    color: #222;
-    margin-bottom: 20px;
+    margin-bottom: 12px;
+    text-align: left;
 }
 
 #about p {
-    font-size: 1.2rem;
+    margin: 0;
+    font-size: 1.1rem;
     line-height: 1.8;
-    color: #666;
-    margin-bottom: 20px;
+    color: var(--muted);
 }
 
+/* coperta rotunda, ca un disc, care se invarte la hover */
 #about img {
-    width: 100%;
-    max-width: 20rem;
+    flex-shrink: 0;
+    width: 220px;
+    max-width: 40%;
+    aspect-ratio: 1;
+    object-fit: cover;
+    border: 6px solid var(--vinyl);
     border-radius: 50%;
-    margin-top: 20px;
 }
-#about img:hover{
-animation: spin 3s linear infinite;
+
+#about img:hover {
+    animation: spin 3s linear infinite;
 }
-footer {
-    padding: 40px 20px;
+
+#collection {
+    margin: 56px 0;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 28px;
+}
+
+/* cardurile de album: coperta, cu un vinil care iese din spatele ei */
+#collection a {
+    display: block;
+    color: inherit;
+    text-decoration: none;
+}
+
+#collection a:focus-visible {
+    outline: none;
+}
+
+#collection a:focus-visible .card {
+    outline: 3px solid var(--red);
+    outline-offset: 3px;
+}
+
+.card {
+    position: relative;
+    height: 100%;
+    box-sizing: border-box;
+    padding: 14px 14px 16px;
+    overflow: hidden;
+    background-color: var(--white);
+    border: 2px solid var(--brown);
+    border-radius: 12px;
+    box-shadow: var(--hard-shadow);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* vinilul (eticheta rosie in mijloc, santurile ca niste cercuri) */
+.card::before {
+    content: '';
+    position: absolute;
+    top: 22px;
+    right: 14px;
+    width: 66%;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background:
+        radial-gradient(circle, var(--red) 0 12%, var(--vinyl) 13% 15%, transparent 16%),
+        repeating-radial-gradient(circle, var(--vinyl) 0 3px, #4A302A 3px 4px);
+    transition: transform 0.4s ease;
+}
+
+.card img {
+    position: relative;
+    z-index: 1;
+    display: block;
+    width: 78%;
+    aspect-ratio: 1;
+    object-fit: cover;
+    border-radius: 6px;
+}
+
+.card h3 {
+    margin: 12px 0 0;
+    font-size: 1.1rem;
+}
+
+.card p {
+    margin: 2px 0 0;
+    font-size: 0.95rem;
+    color: var(--muted);
+}
+
+#collection a:hover .card {
+    transform: translate(-2px, -2px);
+    box-shadow: 6px 6px 0 var(--brown);
+}
+
+/* la hover, vinilul iese putin si se rostogoleste */
+#collection a:hover .card::before {
+    transform: translateX(12%) rotate(40deg);
+}
+
+/* footer-ul cu datele de contact si formularul */
+footer#contact {
+    padding: 48px 32px 24px;
+    text-align: left;
 }
 
 footer .footer-content {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-start;
+    gap: 24px 32px;
     max-width: 1200px;
-    margin: 0 auto;
+    margin: 0 auto 32px;
 }
 
 footer .footer-section {
-    flex: 1;
-    margin: 10px;
-    min-width: 200px;
+    flex: 1 0 auto; /* latimea dupa continut si fara sa se stranga, ca emailul sa nu intre peste coloana urmatoare */
+    min-width: 180px;
 }
 
 footer .footer-section h3 {
+    margin: 0 0 12px;
+    font-family: var(--font-display);
     font-size: 1.5rem;
-    margin-bottom: 15px;
+    font-weight: normal;
+    color: var(--mustard);
 }
 
-footer .footer-section p,
+footer .footer-section p {
+    margin: 4px 0;
+}
+
 footer .footer-section a {
-    font-size: 1rem;
-    color: #fff;
+    color: var(--cream);
     text-decoration: none;
 }
 
 footer .footer-section a:hover {
+    color: var(--peach);
     text-decoration: underline;
 }
 
 footer .call-button {
-    display: inline-block;
-    margin-top: 10px;
-    padding: 10px 20px;
-    background-color: #f04;
-    color: #fff;
-    text-align: center;
-    border-radius: 5px;
-    font-size: 1rem;
-    text-decoration: none;
+    margin-top: 12px;
 }
 
-footer .call-button:hover {
-    background-color: #c03;
+footer .footer-section a.call-button:hover {
+    color: var(--cream);
+    text-decoration: none;
 }
 
 .contact-icons {
     display: flex;
     align-items: center;
-    margin: 5px 0;
+    gap: 10px;
+    margin: 6px 0;
 }
 
 .contact-icons img {
     width: 20px;
     height: 20px;
-    margin-right: 10px;
 }
 
 footer > p {
+    padding-top: 20px;
+    border-top: 1px solid rgba(251, 243, 228, 0.2);
     text-align: center;
-    margin: 0;
+    color: var(--peach);
 }
-section h2 {
-    font-size: 1.8rem;
-    margin-bottom: 20px;
-    text-align: center;
-}
-.grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 20px;
-}
-.card {
-    background-color: #fff;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    overflow: hidden;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
-.card img {
-    width: 100%;
-    height: auto;
-}
-.card h3 {
-    font-size: 1.6rem;
-    margin: 10px;
-}
-.card p {
-    font-size: 1.2rem;
-    margin: 10px;
-}
-/* cardurile sunt link-uri spre paginile albumelor: fara albastru si subliniere */
-#collection a {
-    color: inherit;
-    text-decoration: none;
-}
-#collection a .card {
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-#collection a:hover .card {
-    transform: translateY(-4px);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
-}
-
-  @media(max-width: 530px){
-    #vinyl-icon{
-        display: none;
-    }
-    .links-container{
-      flex-direction: column;
-      align-items: flex-start;
-      justify-content: flex-start;
-  
-      position: fixed;
-      top: 0;
-      right: -100%;
-      z-index: 10;
-      width: 300px;
-  
-      background-color: var(--crem);
-      box-shadow: -5px 0 5px rgba(0, 0, 0, 0.25);
-      transition: 0.75s ease-out;
-    }
-    nav a{
-      box-sizing: border-box;
-      height: auto;
-      width: 100%;
-      padding: 20px 30px;
-      justify-content: flex-start;
-    }
-    .open-sidebar-button, .close-sidebar-button{
-      padding: 20px;
-      display: block;
-    }
-    #sidebar-active:checked ~ .links-container{
-      right: 0;
-    }
-    #sidebar-active:checked ~ #overlay{
-      height: 100%;
-      width: 100%;
-      position: fixed;
-      top: 0;
-      left: 0;
-      z-index: 9;
-    }
-  }
 
 .contact-form {
-    max-width: 500px;
-    margin: 2rem auto;
-    padding: 1.5rem;
-    background-color: #f9f9f9;
-    border-radius: 10px;
-  }
-  
-  .contact-form fieldset {
-    border: none;
-    padding: 0;
+    flex: 1 1 320px;
+    max-width: 460px;
+    padding: 24px;
+    color: var(--brown);
+    background-color: var(--cream);
+    border: 2px solid var(--brown);
+    border-radius: 12px;
+    box-shadow: 4px 4px 0 var(--mustard);
+}
+
+.contact-form fieldset {
     margin: 0;
-  }
-  
-  .contact-form input[type="text"],
-  .contact-form input[type="email"],
-  .contact-form input[type="tel"],
-  .contact-form textarea {
+    padding: 0;
+    border: none;
+}
+
+.contact-form input,
+.contact-form textarea {
     width: 100%;
-    margin-bottom: 1rem;
-    padding: 0.75rem;
-    font-size: 1rem;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    box-sizing: border-box;
-    background-color: #fff;
-    transition: border-color 0.3s ease, box-shadow 0.3s ease;
-  }
-  
-  .contact-form input[type="text"]:focus,
-  .contact-form input[type="email"]:focus,
-  .contact-form input[type="tel"]:focus,
-  .contact-form textarea:focus {
-    border-color: #4CAF50;
-    box-shadow: 0 0 5px rgba(76, 175, 80, 0.5);
-    outline: none;
-  }
-  
-  .contact-form textarea {
+    margin-bottom: 12px;
+}
+
+.contact-form textarea {
     resize: vertical;
     min-height: 100px;
-  }
-  
-  .contact-form button {
-    display: inline-block;
-    background-color: #4CAF50;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    padding: 0.75rem 1.5rem;
-    font-size: 1rem;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    width: 100%; 
-  }
-  
-  .contact-form button:hover {
-    background-color: #45a049;
-  }
-  .contact-form .form-output {
-    margin: 1rem 0 0;
-    font-size: 1rem;
-    color: #2e7d32;
-  }
-  .contact-form .form-output:empty {
+}
+
+.contact-form .btn {
+    width: 100%;
+}
+
+.contact-form .form-output {
+    margin: 12px 0 0;
+    color: #2E7D32;
+}
+
+.contact-form .form-output:empty {
     display: none;
-  }
-  
+}
+
+@media (max-width: 530px) {
+    /* logo-ul in stanga, butonul de meniu in dreapta, pe acelasi rand */
+    .site-header {
+        flex-wrap: nowrap;
+        justify-content: space-between;
+        gap: 8px;
+    }
+    .links-container {
+        flex-direction: column;
+        flex-wrap: nowrap;
+        align-items: stretch;
+        justify-content: flex-start;
+
+        position: fixed;
+        top: 0;
+        right: -100%;
+        z-index: 10;
+        width: 280px;
+        height: 100%;
+
+        background-color: var(--cream);
+        border-left: 3px solid var(--brown);
+        transition: right 0.5s ease-out;
+    }
+    nav a {
+        margin: 0;
+        padding: 16px 28px;
+        border-bottom: 1px solid rgba(59, 31, 26, 0.15);
+    }
+    nav a:hover,
+    nav a[aria-current="page"] {
+        border-bottom-color: rgba(59, 31, 26, 0.15);
+        background-color: var(--peach);
+    }
+    .open-sidebar-button, .close-sidebar-button {
+        display: block;
+        padding: 8px;
+    }
+    .close-sidebar-button {
+        align-self: flex-end;
+        padding: 16px 20px;
+    }
+    #sidebar-active:checked ~ .links-container {
+        right: 0;
+    }
+    #sidebar-active:checked ~ #overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 9;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(43, 27, 23, 0.4);
+    }
+    main {
+        padding: 0 16px;
+    }
+    .hero {
+        padding: 28px 24px;
+    }
+    #about {
+        flex-direction: column;
+        padding: 24px;
+        text-align: center;
+    }
+    #about h2 {
+        text-align: center;
+    }
+    #about img {
+        max-width: 60%;
+    }
+    footer#contact {
+        padding: 40px 16px 24px;
+    }
+}

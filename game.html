@@ -5,10 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Jukebox Junction Game</title>
   <script type="text/javascript" src="resources/js/script.js"></script>
+  <script type="text/javascript" src="resources/js/loginindex.js"></script>
   <link rel="stylesheet" href="resources/css/base.css">
-  <link rel="stylesheet" href="resources/css/page.css">
   <link rel="stylesheet" href="resources/css/game.css">
-  <link href="https://fonts.googleapis.com/css2?family=Mynerve&family=Playfair+Display:wght@400;700&family=Righteous&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Mynerve&family=Righteous&display=swap" rel="stylesheet">
   <link rel="icon" href="resources/icons/boombox.ico" type="image/x-icon">
 </head>
 <body>
@@ -25,15 +25,17 @@
             <path d="M504.969,83.262c-4.532-4.538-10.563-7.037-16.98-7.037s-12.448,2.499-16.978,7.034l-7.161,7.161 c-3.124,3.124-3.124,8.189,0,11.313c3.124,3.123,8.19,3.124,11.314-0.001l7.164-7.164c1.51-1.512,3.52-2.344,5.66-2.344 s4.15,0.832,5.664,2.348c1.514,1.514,2.348,3.524,2.348,5.663s-0.834,4.149-2.348,5.663L217.802,381.75 c-1.51,1.512-3.52,2.344-5.66,2.344s-4.15-0.832-5.664-2.348L98.747,274.015c-1.514-1.514-2.348-3.524-2.348-5.663 c0-2.138,0.834-4.149,2.351-5.667c1.51-1.512,3.52-2.344,5.66-2.344s4.15,0.832,5.664,2.348l96.411,96.411 c1.5,1.5,3.535,2.343,5.657,2.343s4.157-0.843,5.657-2.343l234.849-234.849c3.125-3.125,3.125-8.189,0-11.314 c-3.124-3.123-8.189-3.123-11.313,0L212.142,342.129l-90.75-90.751c-4.533-4.538-10.563-7.037-16.98-7.037 s-12.448,2.499-16.978,7.034c-4.536,4.536-7.034,10.565-7.034,16.977c0,6.412,2.498,12.441,7.034,16.978l107.728,107.728 c4.532,4.538,10.563,7.037,16.98,7.037c6.417,0,12.448-2.499,16.977-7.033l275.847-275.848c4.536-4.536,7.034-10.565,7.034-16.978 S509.502,87.794,504.969,83.262z"/>
         </symbol>
     </svg>
-    <header>
-        <span id="vinyl-icon"></span>
-        <h1>Jukebox Junction Game</h1>
+    <header class="site-header">
+        <a href="index.html" class="logo"><span id="vinyl-icon"></span>Jukebox Junction</a>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="index.html#collection">Collection</a>
+            <a href="game.html" aria-current="page">Game</a>
+            <a href="login.html" id="login">Log in</a>
+        </nav>
     </header>
-    <nav>
-        <a href="index.html">Home</a>
-        <a href="index.html#collection">Collection</a>
-        <a href="game.html">Game</a>
-    </nav>
+
+    <h1 class="page-title">Jukebox Junction Game<span>Guess the song, one track at a time</span></h1>
 
     <main class="game">
     <div id="instructions">
@@ -108,13 +110,13 @@
             <input type="text" id="searchInput" placeholder="Type a song title..." autocomplete="off">
                 <div id="dropdown" class="dropdown" style="display: none;"></div>
         </div>
-            <button id="submitbtn">Guess!</button>
+            <button id="submitbtn" class="btn">Guess!</button>
             </div>
             </div>
             <div id="winContainer">
                 <h1 id="winMessage"></h1>
                 <p id="detailsMessage"></p>
-                <button id="playAgainBtn">Play Again</button>
+                <button id="playAgainBtn" class="btn">Play Again</button>
               </div>
       <div id="output">Loading...</div>
     </main>

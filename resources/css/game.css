@@ -1,46 +1,46 @@
-/* pagina jocului: fundalul, header-ul, meniul si footer-ul vin din base.css si page.css */
+/* pagina jocului. Header-ul, titlul paginii, footer-ul, butoanele si campurile vin din base.css */
 
 main.game {
   max-width: 1100px;
   margin: 0 auto;
-  padding: 20px;
+  padding: 20px 24px 48px;
 }
 
 #instructions {
-  padding: 15px 20px;
-  margin: 20px auto;
   max-width: 600px;
-  background-color: var(--color2);
-  border-radius: 10px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin: 20px auto;
+  padding: 16px 24px;
   font-size: 1.05rem;
-  color: #333;
-  line-height: 1.5;
+  line-height: 1.6;
+  background-color: var(--white);
+  border: 2px solid var(--brown);
+  border-radius: 12px;
+  box-shadow: var(--hard-shadow);
 }
 
 #instructions .highlight {
-  color: #2e7d32;
-  font-weight: bold;
+  color: var(--red);
+  font-weight: 700;
 }
 
 #artistGallery {
-  text-align: center;
-  margin: 20px auto;
   max-width: 800px;
+  margin: 32px auto 20px;
   padding: 10px;
+  text-align: center;
 }
 
 #artistGallery h2 {
-  font-size: 1.8rem;
   margin: 0 0 20px;
-  color: #222;
+  font-size: 1.8rem;
+  color: var(--red);
 }
 
 .gallery {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 20px;
+  gap: 24px;
 }
 
 /* cardurile sunt <button>, ca sa poata fi alese si de la tastatura (Tab + Enter/Space) */
@@ -50,49 +50,44 @@ main.game {
   align-items: center;
   max-width: 150px;
   padding: 0;
-  border: none;
-  background: none;
-  text-align: center;
   font-family: inherit;
-  color: #333;
+  text-align: center;
+  color: var(--brown);
+  background: none;
+  border: none;
   cursor: pointer;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.artist-card:focus-visible {
-  outline: 3px solid #4CAF50;
-  outline-offset: 4px;
-  border-radius: 10px;
+  transition: transform 0.2s ease;
 }
 
 .artist-card:hover {
-  transform: scale(1.05);
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  transform: translate(-2px, -2px);
 }
 
-/* artistul ales acum */
-.artist-card.selected .artist-photo {
-  outline: 4px solid var(--darker-gray);
-  outline-offset: 2px;
+.artist-card:focus-visible {
+  outline: 3px solid var(--red);
+  outline-offset: 4px;
+  border-radius: 12px;
 }
 
 .artist-photo {
   width: 100%;
   height: auto;
-  border-radius: 10px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
-  transition: box-shadow 0.3s ease;
+  border: 2px solid var(--brown);
+  border-radius: 12px;
+  box-shadow: var(--hard-shadow);
 }
 
-.artist-photo:hover {
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+/* artistul ales acum */
+.artist-card.selected .artist-photo {
+  outline: 4px solid var(--red);
+  outline-offset: 3px;
 }
 
 .artist-card span {
   display: block;
-  margin: 10px 0 16px;
+  margin: 12px 0 16px;
   font-size: 1rem;
-  font-weight: bold;
+  font-weight: 700;
 }
 
 .color-picker-row {
@@ -103,7 +98,7 @@ main.game {
   margin: 10px 0;
 }
 
-/* tabla de joc: coperta + detaliile ghicirii. Fundalul ramane bej (ca inainte),
+/* tabla de joc: coperta + detaliile ghicirii. Fundalul ramane bej-maroniu (ca inainte),
    ca textul colorat cu culoarea fiecarui album sa se vada la fel */
 .container {
   display: flex;
@@ -112,23 +107,25 @@ main.game {
   justify-content: space-around;
   align-items: flex-start;
   gap: 2rem;
-  padding: 30px;
-  margin: 2rem auto;
-  height: 500px;
   max-width: 90%;
-  background-color: var(--beige);
-  border: 2px solid var(--darker-gray);
-  border-radius: 10px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  height: 500px;
+  margin: 2rem auto;
+  padding: 30px;
+  background-color: var(--tan);
+  border: 2px solid var(--brown);
+  border-radius: 12px;
+  box-shadow: 6px 6px 0 var(--brown);
 }
 
 #AlbumPicBox {
   position: relative;
   width: 40vw;
-  aspect-ratio: 1 / 1;
   max-width: 500px;
-  border: 2px solid #fff;
+  aspect-ratio: 1 / 1;
   box-sizing: border-box;
+  border: 2px solid var(--cream);
+  border-radius: 8px;
+  overflow: hidden;
 }
 
 #AlbumPic {
@@ -142,8 +139,8 @@ main.game {
   justify-content: flex-start;
   align-items: flex-start;
   gap: 0.5rem;
-  padding: 1rem;
   max-width: 300px;
+  padding: 1rem;
 }
 
 #AlbumDetailsBox > div {
@@ -151,18 +148,18 @@ main.game {
 }
 
 .detail-label {
-  color: #222;
-  font-weight: bold;
+  font-family: var(--font-display);
   font-size: 1.5rem;
+  color: var(--brown);
 }
 
 /* textul ghicirii (titlu, album, nr. piesa) */
 .albumDetails {
+  margin: 0.67em 0;
   font-family: 'Mynerve', cursive;
   font-size: 18px;
   font-weight: bold;
   text-align: center;
-  margin: 0.67em 0;
 }
 
 /* svg-ul cu <symbol>-uri nu trebuie sa ocupe loc in pagina */
@@ -180,7 +177,7 @@ main.game {
   height: 16px;
 }
 
-/* cautarea piesei: acelasi stil ca la campurile formularului de contact */
+/* cautarea piesei (stilul campului vine din base.css) */
 .search-container {
   display: inline-block;
   position: relative;
@@ -189,133 +186,91 @@ main.game {
 
 #searchInput {
   width: 100%;
-  box-sizing: border-box; /* latimea include padding-ul, ca sa nu iasa din cutie */
-  padding: 10px;
-  font-size: 1rem;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  background-color: #fff;
-  color: #333;
-  transition: border-color 0.3s ease, box-shadow 0.3s ease;
-}
-
-#searchInput:focus {
-  border-color: #4CAF50;
-  box-shadow: 0 0 5px rgba(76, 175, 80, 0.5);
-  outline: none;
-}
-
-#searchInput::placeholder {
-  color: #999;
 }
 
 #dropdown {
+  display: none;
   position: absolute;
   top: 100%;
   left: 0;
-  width: 100%;
+  z-index: 999;
   box-sizing: border-box;
-  background-color: #fff;
-  color: #333;
-  border: 1px solid #ccc;
-  border-top: none;
-  border-radius: 0 0 5px 5px;
+  width: 100%;
   max-height: 200px;
   overflow-y: auto;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
-  display: none;
-  z-index: 999;
+  color: var(--brown);
+  background-color: var(--white);
+  border: 2px solid var(--brown);
+  border-top: none;
+  border-radius: 0 0 8px 8px;
 }
 
 .suggestion {
   padding: 10px;
+  border-bottom: 1px solid var(--peach);
   cursor: pointer;
-  border-bottom: 1px solid #eee;
   transition: background-color 0.2s ease-in-out;
 }
 
 .suggestion:hover {
-  background-color: var(--color2);
+  background-color: var(--peach);
 }
 
-/* acelasi verde ca butoanele Submit si Login */
 #submitbtn {
-  margin-top: 0.2rem;
-  padding: 0.5rem 1.5rem;
-  font-size: 1rem;
-  color: #fff;
-  background-color: #4CAF50;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-#submitbtn:hover {
-  background-color: #45a049;
+  margin-top: 0.4rem;
 }
 
 #winContainer {
   display: none;
-  padding: 20px;
-  border: 2px solid #4CAF50;
-  background-color: var(--color2);
-  text-align: center;
   max-width: 500px;
   margin: 50px auto;
-  border-radius: 10px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 24px;
+  text-align: center;
+  background-color: var(--white);
+  border: 2px solid var(--brown);
+  border-radius: 12px;
+  box-shadow: 6px 6px 0 var(--mustard);
 }
 
 #winContainer h1 {
-  font-family: 'Mynerve', cursive;
   margin: 0 0 15px;
+  font-family: 'Mynerve', cursive;
   font-size: 24px;
-  color: #2e7d32;
+  font-weight: bold;
+  color: var(--red);
 }
 
 #winContainer h2, #winContainer p {
   margin-bottom: 20px;
   font-size: 18px;
-  color: #000000;
-}
-
-#playAgainBtn {
-  padding: 10px 20px;
-  font-size: 16px;
-  color: #fff;
-  background-color: #4CAF50;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-#playAgainBtn:hover {
-  background-color: #45a049;
+  color: var(--brown);
 }
 
 .statsMessage {
   margin-bottom: 20px;
   font-size: 18px;
-  color: #000000;
 }
 
 /* lista cu discografia artistului ales, sub joc */
 #output {
   max-width: 800px;
   margin: 40px auto 0;
-  color: #333;
 }
 
 #output h2 {
   font-size: 1.5rem;
-  color: #222;
+  color: var(--red);
+}
+
+#output img {
+  border: 2px solid var(--brown);
+  border-radius: 8px;
 }
 
 #output hr {
+  margin: 24px 0;
   border: none;
-  border-top: 1px solid rgba(0, 0, 0, 0.2);
-  margin: 20px 0;
+  border-top: 2px dashed var(--peach);
 }
 
 /* pe telefon: coperta deasupra detaliilor, nu una langa alta */
@@ -323,11 +278,18 @@ main.game {
   main.game {
     padding: 16px;
   }
+  /* doi artisti pe rand, nu unul */
+  .gallery {
+    gap: 16px;
+  }
+  .artist-card {
+    max-width: 130px;
+  }
   .container {
     flex-direction: column;
     align-items: stretch;
-    height: auto;
     max-width: none;
+    height: auto;
     margin: 1rem 0;
     padding: 16px;
   }

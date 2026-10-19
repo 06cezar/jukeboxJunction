@@ -1,47 +1,56 @@
 /* continutul paginilor de album (coperta, descriere, tracklist).
-   Header-ul, meniul si footer-ul vin din base.css si page.css */
+   Header-ul, titlul paginii si footer-ul vin din base.css */
 .album-container {
     column-count: 3;
-    column-gap: 20px;
+    column-gap: 28px;
     max-width: 1200px;
-    margin: 20px auto;
-    padding: 20px;
+    margin: 32px auto 48px;
+    padding: 0 24px;
 }
 
 .column {
-    background-color: var(--color2);
-    border-radius: 10px;
-    padding: 20px;
-    margin-bottom: 20px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     break-inside: avoid;
+    margin-bottom: 28px;
+    padding: 20px;
+    background-color: var(--white);
+    border: 2px solid var(--brown);
+    border-radius: 12px;
+    box-shadow: var(--hard-shadow);
 }
 
 .column img {
     display: block;
     width: 100%;
-    border-radius: 10px;
+    border-radius: 8px;
 }
 
 .column h2 {
-    font-size: 1.8rem;
     margin: 0 0 10px;
-    color: #222;
+    font-size: 1.6rem;
+    color: var(--red);
 }
 
 .column p {
-    font-size: 1.1rem;
-    margin: 0 0 15px;
-    color: #444;
+    margin: 0;
+    font-size: 1.05rem;
+    line-height: 1.7;
+    color: var(--muted);
 }
 
 .column ol {
-    padding-left: 24px;
     margin: 0;
-    font-size: 1rem;
+    padding-left: 24px;
+}
+
+.column li {
+    padding: 3px 0;
 }
 
 /* piesele recomandate */
+.column li.highlight {
+    font-weight: 700;
+}
+
 .column li.highlight::before {
     content: "⭐ ";
 }
@@ -49,13 +58,13 @@
 @media (max-width: 768px) {
     .album-container {
         column-count: 2;
-        column-gap: 15px;
+        column-gap: 20px;
     }
 }
 
 @media (max-width: 530px) {
     .album-container {
         column-count: 1;
-        padding: 16px;
+        padding: 0 16px;
     }
 }

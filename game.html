@@ -77,7 +77,14 @@
 
     <div id="AlbumPicBox">
 
-        <div id="AlbumPicDiv"><img id="AlbumPic" alt=""></div>
+        <div id="AlbumPicDiv">
+            <img id="AlbumPic" alt="">
+            <!-- vinilul cu "?" se vede pana la prima ghicire (cat timp imaginea n-are src) -->
+            <div class="cover-placeholder" aria-hidden="true">
+                <span class="placeholder-disc"></span>
+                <span class="placeholder-mark">?</span>
+            </div>
+        </div>
 
     </div>
 
@@ -118,7 +125,14 @@
                 <p id="detailsMessage"></p>
                 <button id="playAgainBtn" class="btn">Play Again</button>
               </div>
-      <div id="output">Loading...</div>
+      <!-- discografia artistului: ascunsa implicit, ca sa nu dea raspunsul -->
+      <details class="tracklist">
+        <summary class="btn">
+          <span class="when-closed">Show tracklist</span>
+          <span class="when-open">Hide tracklist</span>
+        </summary>
+        <div id="output">Loading...</div>
+      </details>
     </main>
 
     <footer>

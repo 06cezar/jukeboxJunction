@@ -26,7 +26,7 @@ The design is a retro record shop: cream, cherry red and mustard, Righteous for 
 - Total wins and best score are saved in `localStorage`.
 - Artist cards are buttons, so they work with the keyboard too.
 
-**Login** (`login.html`)
+**Log in** (`login.html`)
 - Checks the username and password against `resources/json/users.json`.
 - A wrong attempt locks the form for 10 seconds.
 - The logged-in user is kept in `localStorage` (`loggedInUser`). The game greets them by name.
@@ -49,7 +49,7 @@ resources/
     script.js     game logic
     contact.js    contact form (validation messages, submit)
     login.js      login page
-    loginindex.js Login/Logout link on the home page
+    loginindex.js Log in / Log out link in the menu on every page
   json/           discographies for the game (frank, tyler, lana, michael) and demo users
   img/            album covers and artist photos
   icons/, svg/    favicon, contact icons, header cursor

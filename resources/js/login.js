@@ -59,6 +59,7 @@ window.onload = function() {
         );
         if (user) {
           localStorage.setItem("loggedInUser", username); // singura cheie pt starea de login
+          updateLoginLink(); // meniul arata "Log out" imediat (functia e in loginindex.js)
           alert("You logged in successfully!");
           setTimeout(() => {
             console.log("You have logged in.");
@@ -92,6 +93,7 @@ window.onload = function() {
 
   logoutButton.addEventListener("click", () => {
     localStorage.removeItem("loggedInUser");
+    updateLoginLink(); // meniul arata "Log in" imediat
     alert("You logged out!");
     setTimeout(() => {
       console.log("You have logged out.");

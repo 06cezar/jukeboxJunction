@@ -128,9 +128,51 @@ main.game {
   overflow: hidden;
 }
 
+#AlbumPicDiv {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
 #AlbumPic {
   display: block;
   width: 100%;
+}
+
+/* pana la prima ghicire imaginea n-are src: o ascundem si aratam vinilul cu "?" */
+#AlbumPic:not([src]) {
+  display: none;
+}
+
+#AlbumPic[src] + .cover-placeholder {
+  display: none;
+}
+
+.cover-placeholder {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.placeholder-disc {
+  width: 75%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle, var(--mustard) 0 22%, var(--vinyl) 23% 25%, transparent 26%),
+    repeating-radial-gradient(circle, var(--vinyl) 0 3px, #4A302A 3px 4px);
+  animation: spin 6s linear infinite;
+}
+
+/* semnul intrebarii sta pe eticheta, dar nu se invarte cu discul */
+.placeholder-mark {
+  position: absolute;
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 6vw, 4rem);
+  line-height: 1;
+  color: var(--brown);
 }
 
 #AlbumDetailsBox {
@@ -251,10 +293,33 @@ main.game {
   font-size: 18px;
 }
 
-/* lista cu discografia artistului ales, sub joc */
+/* lista cu discografia artistului ales, sub joc: ascunsa pana apesi "Show tracklist" */
+.tracklist {
+  margin-top: 40px;
+  text-align: center;
+}
+
+.tracklist summary {
+  list-style: none; /* fara sageata implicita a lui <details> */
+}
+
+.tracklist summary::-webkit-details-marker {
+  display: none;
+}
+
+.tracklist .when-open,
+.tracklist[open] .when-closed {
+  display: none;
+}
+
+.tracklist[open] .when-open {
+  display: inline;
+}
+
 #output {
   max-width: 800px;
-  margin: 40px auto 0;
+  margin: 32px auto 0;
+  text-align: left;
 }
 
 #output h2 {
